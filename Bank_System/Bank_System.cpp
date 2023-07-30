@@ -6,4 +6,3 @@ int main()
     std::cout << "Welcome" << std::endl;
     std::cout << "New Bank System" << std::endl;
 }
-
