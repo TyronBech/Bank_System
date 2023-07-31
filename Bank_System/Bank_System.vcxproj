@@ -128,7 +128,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
-    <ClCompile Include="Bank_System.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="Sign_up.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />
