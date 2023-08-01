@@ -11,6 +11,8 @@ bool Name_checker(const std::string name) {
 	return true;
 }
 // Initialization of the method Sign_up from Account
+// User will input all necessary information to be
+// added in class Account also in csv file
 std::tuple<bool, user::Account> BANK::Sign_up() {
 	std::string name = "";
 	bool set = false, succeed = false, set_name = false;
@@ -84,11 +86,13 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 		} while (true);
 		return false;
 	};
+	// lambda function call for birthdate
 	set = set_birthdate();
 	if (!set) return std::make_tuple(false, User);
 	counter = 1;
 	char gender;
 	do {
+		// User will choose one of the availble genders including LGBTQ+
 		std::cout << "Enter your gender:" << std::endl;
 		std::cout << "A. Male" << std::endl;
 		std::cout << "B. Female" << std::endl;

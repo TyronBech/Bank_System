@@ -1,5 +1,7 @@
 #include"functions.h"
 
+// Declared functions. All the initialization is below the
+// Account_List function
 std::vector<user::Account> Retrieve();
 void Append(std::vector<user::Account>& user);
 
@@ -54,6 +56,7 @@ std::vector<user::Account> Retrieve() {
 	}
 	return Users;
 }
+// This function is used to append an added account to the csv file
 void Append(std::vector<user::Account>& user) {
 	std::ofstream outFile;
 	outFile.open("Account_Lists.csv", std::ios::out | std::ios::trunc);

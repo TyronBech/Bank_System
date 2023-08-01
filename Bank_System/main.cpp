@@ -1,5 +1,5 @@
 #include"functions.h"
-
+// Main function of the program
 int main()
 {
     // vector that handle all the accounts during program execution
@@ -23,13 +23,17 @@ int main()
         std::cout << "3 - Exit" << std::endl;
         std::cout << "Enter your choice: ";
         std::cin >> choice;
+        // Switch case is used to check the user's input
         switch (choice) {
+        // Case 1 if for log in
         case 1: result = BANK::Log_in(User);
             break;
+        // Case 2 is for sign up
         case 2: Get_info = BANK::Sign_up();
             result = std::get<0>(Get_info);
             if (!result) {
                 std::cout << "You may tried multiple times and failed" << std::endl;
+                std::cout << "or encounter error during signe up" << std::endl;
                 std::cout << "Sign up terminated" << std::endl;
             }
             else {
