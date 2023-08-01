@@ -1,4 +1,4 @@
-#include "Account.h"
+#include "functions.h"
 
 // This function declared in class Account is used to display user's information
 // just like any profile application

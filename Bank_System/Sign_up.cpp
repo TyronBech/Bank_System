@@ -11,9 +11,10 @@ bool Name_checker(const std::string name) {
 	return true;
 }
 // Initialization of the method Sign_up from Account
-bool BANK::Sign_up(user::Account& User) {
+std::tuple<bool, user::Account> BANK::Sign_up() {
 	std::string name = "";
 	bool set = false, succeed = false, set_name = false;
+	user::Account User;
 	// counter variable to identify how many fails does
 	// user done, if more than 3 the Sign_up section will terminate
 	// the counter resets in each inputs
@@ -30,7 +31,7 @@ bool BANK::Sign_up(user::Account& User) {
 			counter++;
 		}
 		else break;
-		if (counter > 3) return false;
+		if (counter > 3) return std::make_tuple(false, User);
 	} while (true);
 	counter = 1;
 	// Lambda function to setup user's birthdate
@@ -51,11 +52,11 @@ bool BANK::Sign_up(user::Account& User) {
 			std::cout << "Enter your birthdate(dd/mm/yyy): ";
 			// input inside if statement will help to extract the input of the user
 			// in proper format
-			if (std::cin >> day && day < 31 && day > 1 &&
+			if (std::cin >> day && day <= 31 && day >= 1 &&
 				std::cin >> input_dash && input_dash == dash &&
 				std::cin >> month && month > 0 && month < 13 &&
 				std::cin >> input_dash && input_dash == dash &&
-				std::cin >> year && year > 1900 && year < (Local_Time.tm_year + 1900)) {
+				std::cin >> year && year >= 1900 && year < (Local_Time.tm_year + 1900)) {
 				std::string Months[] = {
 					"", "January", "Febuary", "March", "April",
 					"May", "June", "July", "August",
@@ -64,7 +65,7 @@ bool BANK::Sign_up(user::Account& User) {
 				// The ostringstream will stitch the date together and
 				// will be inserted in birthdate variable
 				std::ostringstream oss;
-				oss << Months[month] << ' ' << day << ", " << year;
+				oss << Months[month] << ' ' << day << ' ' << year;
 				birthdate = oss.str();
 				age = (Local_Time.tm_year + 1900) - year;
 				if (month > (Local_Time.tm_mon + 1) ||
@@ -84,7 +85,7 @@ bool BANK::Sign_up(user::Account& User) {
 		return false;
 	};
 	set = set_birthdate();
-	if (!set) return false;
+	if (!set) return std::make_tuple(false, User);
 	counter = 1;
 	char gender;
 	do {
@@ -102,7 +103,7 @@ bool BANK::Sign_up(user::Account& User) {
 			counter++;
 		}
 		else break;
-		if (counter > 3) return false;
+		if (counter > 3) return std::make_tuple(false, User);
 	} while (true);
 	// Username and password input
 	std::string username = "", userpass = "";
@@ -133,7 +134,7 @@ bool BANK::Sign_up(user::Account& User) {
 		unsigned min = 10000000, max = 99999999;
 		std::uniform_int_distribution<unsigned> distribution(min, max);
 		User.set_ID(distribution(generator));
-		return true;
+		return std::make_tuple(true, User);
 	}
-	return false;
+	return std::make_tuple(false, User);
 }

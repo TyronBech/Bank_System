@@ -3,15 +3,15 @@
 namespace user {
 	class Account
 	{
-	//Necessary members to be used to setup user's account
+		//Necessary members to be used to setup user's account
 	protected:
-		std::string Name;
-		unsigned Age;
-		std::string Gender;
-		std::string Birthdate;
+		std::string Name = "";
+		unsigned Age = 0;
+		std::string Gender = "";
+		std::string Birthdate = "";
 	private:
-		std::string Username;
-		std::string Password;
+		std::string Username = "";
+		std::string Password = "";
 		unsigned ID = 0;
 		long Balance = 0;
 
@@ -20,7 +20,7 @@ namespace user {
 		Account() = default;
 		void Profile_Info();
 		//setters and getters
-		void set_Name(const std::string Name){
+		void set_Name(const std::string Name) {
 			this->Name = Name;
 		}
 		void set_Age(const unsigned Age) {
@@ -40,6 +40,33 @@ namespace user {
 		}
 		void set_ID(const unsigned ID) {
 			this->ID = ID;
+		}
+		void set_Balance(const long Balance) {
+			this->Balance = Balance;
+		}
+		std::string get_Name() {
+			return Name;
+		}
+		unsigned get_Age() {
+			return Age;
+		}
+		std::string get_Gender() {
+			return Gender;
+		}
+		std::string get_Birthdate() {
+			return Birthdate;
+		}
+		std::string get_Username() {
+			return Username;
+		}
+		std::string get_Password() {
+			return Password;
+		}
+		unsigned get_ID() {
+			return ID;
+		}
+		long get_Balance() {
+			return Balance;
 		}
 	};
 }

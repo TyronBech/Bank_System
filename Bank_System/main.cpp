@@ -1,20 +1,48 @@
-#include"Account.h"
 #include"functions.h"
 
 int main()
 {
-    std::cout << "C++ Bank" << std::endl;
-    std::cout << "Welcome" << std::endl;
-    std::cout << "New Bank System" << std::endl;
+    // vector that handle all the accounts during program execution
     std::vector<user::Account> User;
+    // Temporary object for class Account
     user::Account temp_user;
-    bool result = BANK::Sign_up(temp_user);
-    if (!result) {
-        std::cout << "You tried many times" << std::endl;
-        std::cout << "Sign up terminated" << std::endl;
-    }
-    else {
-        User.push_back(temp_user);
-        User[0].Profile_Info();
-    }
+    // tuple to retrieve multiple returns in Sign_up function
+    std::tuple<bool, user::Account> Get_info;
+    // Retrieving all the present account in the csv using the 0 flag
+    // to note that the program should retrieve the accounts only
+    BANK::Account_List(0, User);
+    unsigned choice = 0;
+    bool result;
+    // Main menu where program is going the let the user to choose
+    // based on available choices and check it to the switch case
+    do {
+        std::cout << "C++ Bank" << std::endl;
+        std::cout << "Welcome" << std::endl;
+        std::cout << "1 - Log in" << std::endl;
+        std::cout << "2 - Sign up" << std::endl;
+        std::cout << "3 - Exit" << std::endl;
+        std::cout << "Enter your choice: ";
+        std::cin >> choice;
+        switch (choice) {
+        case 1: result = BANK::Log_in(User);
+            break;
+        case 2: Get_info = BANK::Sign_up();
+            result = std::get<0>(Get_info);
+            if (!result) {
+                std::cout << "You may tried multiple times and failed" << std::endl;
+                std::cout << "Sign up terminated" << std::endl;
+            }
+            else {
+                temp_user = std::get<1>(Get_info);
+                User.push_back(temp_user);
+                BANK::Account_List(1, User);
+                std::cout << "Signed an Account successfully" << std::endl;
+                std::cout << "You may now log in" << std::endl;
+            }
+            break;
+        case 3: // Exit case
+            break;
+        default: std::cout << "That is a invalid choice" << std::endl;
+        }
+    } while (choice != 3);
 }
