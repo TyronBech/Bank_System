@@ -14,14 +14,12 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 		}
 		size_t flag = 0;
 		for (size_t i = 0; i < Data.size(); i++) {
-			if (input_username == Data[i].get_Username() && input_pass != Data[i].get_Password()
-				&& i == Data.size() - 1) {
+			if (input_username == Data[i].get_Username() && input_pass != Data[i].get_Password()) {
 				std::cout << "Wrong password" << std::endl;
 				std::cout << "Please try again" << std::endl;
 				break;
 			}
-			else if (input_username != Data[i].get_Username() && input_pass == Data[i].get_Password()
-				&& i == Data.size() - 1) {
+			else if (input_username != Data[i].get_Username() && input_pass == Data[i].get_Password()) {
 				std::cout << "Wrong username" << std::endl;
 				std::cout << "Please try again" << std::endl;
 				break;
