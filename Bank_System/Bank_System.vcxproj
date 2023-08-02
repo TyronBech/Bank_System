@@ -129,8 +129,10 @@
   <ItemGroup>
     <ClCompile Include="Account.cpp" />
     <ClCompile Include="Account_Lists.cpp" />
+    <ClCompile Include="Change_Balance.cpp" />
     <ClCompile Include="Log_in.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Main_Bank.cpp" />
     <ClCompile Include="Sign_up.cpp" />
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,7 @@ int main()
         switch (choice) {
         // Case 1 if for log in
         case 1: result = BANK::Log_in(User);
+            if (result) BANK::Account_List(1, User);
             break;
         // Case 2 is for sign up
         case 2: Get_info = BANK::Sign_up();
@@ -48,5 +49,6 @@ int main()
             break;
         default: std::cout << "That is a invalid choice" << std::endl;
         }
+        if (!result) break;
     } while (choice != 3);
 }

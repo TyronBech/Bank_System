@@ -4,6 +4,7 @@
 // Account_List function
 std::vector<user::Account> Retrieve();
 void Append(std::vector<user::Account>& user);
+void Rewrite(std::vector<user::Account>& user);
 
 void BANK::Account_List(unsigned flag, std::vector<user::Account>& List_of_Accounts) {
 	switch (flag) {
@@ -11,7 +12,7 @@ void BANK::Account_List(unsigned flag, std::vector<user::Account>& List_of_Accou
 	case 0: List_of_Accounts = Retrieve();
 		break;
 	// Append an account to csv file
-	case 1: Append(List_of_Accounts);
+	case 1: Rewrite(List_of_Accounts);
 		break;
 	}
 }
@@ -56,8 +57,8 @@ std::vector<user::Account> Retrieve() {
 	}
 	return Users;
 }
-// This function is used to append an added account to the csv file
-void Append(std::vector<user::Account>& user) {
+// This function is used to append an added account and rewrite all to the csv file
+void Rewrite(std::vector<user::Account>& user) {
 	std::ofstream outFile;
 	outFile.open("Account_Lists.csv", std::ios::out | std::ios::trunc);
 	if (outFile.is_open()) {

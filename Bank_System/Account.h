@@ -13,12 +13,14 @@ namespace user {
 		std::string Username = "";
 		std::string Password = "";
 		unsigned ID = 0;
-		long Balance = 0;
+		double Balance = 0;
 
 	public:
 		// Default constructor for Account class
 		Account() = default;
 		void Profile_Info();
+		void Add_Balance(double amount);
+		void Deduct_Balance(double amount);
 		//setters and getters
 		void set_Name(const std::string Name) {
 			this->Name = Name;
@@ -41,7 +43,7 @@ namespace user {
 		void set_ID(const unsigned ID) {
 			this->ID = ID;
 		}
-		void set_Balance(const long Balance) {
+		void set_Balance(const double Balance) {
 			this->Balance = Balance;
 		}
 		std::string get_Name() {
@@ -65,7 +67,7 @@ namespace user {
 		unsigned get_ID() {
 			return ID;
 		}
-		long get_Balance() {
+		double get_Balance() {
 			return Balance;
 		}
 	};
