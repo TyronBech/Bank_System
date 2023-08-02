@@ -25,7 +25,7 @@ int main()
         std::cin >> choice;
         // Switch case is used to check the user's input
         switch (choice) {
-        // Case 1 if for log in
+        // Case 1 if for log in and directing to the Main_Bank function
         case 1: result = BANK::Log_in(User);
             if (result) BANK::Account_List(1, User);
             break;

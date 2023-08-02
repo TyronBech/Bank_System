@@ -6,14 +6,18 @@ size_t partition(std::vector<user::Account>& arr, size_t low, size_t high);
 void quicksort(std::vector<user::Account>& arr, size_t low, size_t high);
 size_t binary_search(std::vector<user::Account> arr, const std::string target);
 /// <summary>
-/// Log_in function is used to let the user log to his/her account
-/// it will check if the input username and password exists in the 
-/// vector and if the input is correct
+/// This log in function is used to input user's username & password
+/// it check if the input is equal to the existing account and if its correct,
+/// it will direct to the Main_Bank function to do some transactions
 /// </summary>
-/// <param name="Data"> Data is where the Accounts is stored </param>
+/// <param name="Data"> Data is used to check if user's input 
+/// exists in the vector Data which retrieved in csv file</param>
+/// <returns> returns true if log in is successful & false if not</returns>
 bool BANK::Log_in(std::vector<user::Account>& Data) {
 	std::string input_username = "", input_pass = "";
 	unsigned counter = 1;
+	// Quick sort is used to sort the vector 'Data' in alphabetical
+	// order based on usernames
 	quicksort(Data, 0, Data.size() - 1);
 	do {
 		std::cout << "Log In Section" << std::endl;
@@ -22,9 +26,12 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 		std::cout << "Enter a password: ";
 		std::getline(std::cin >> std::ws, input_pass);
 		size_t index = binary_search(Data,input_username);
+		// This part will check is the account exist and if the
+		// input password is correct
 		if (index == -1) {
 			std::cout << "Sorry there is no existing account" << std::endl;
 			std::cout << "Please try another account" << std::endl;
+			counter++;
 		}
 		else {
 			if (input_pass == Data[index].get_Password()) {
@@ -58,7 +65,6 @@ size_t partition(std::vector<user::Account>& arr, size_t low, size_t high) {
 	std::swap(arr[i + 1], arr[high]);
 	return i + 1;
 }
-
 // it is used to sort the vector of account for the binary search
 void quicksort(std::vector<user::Account>& arr, size_t low, size_t high) {
 	if (low < high) {
