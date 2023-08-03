@@ -31,6 +31,8 @@ int main()
             break;
         // Case 2 is for sign up
         case 2: Get_info = BANK::Sign_up();
+            // Getting the first return which the boolean result to be check
+            // if the sign up is successful
             result = std::get<0>(Get_info);
             if (!result) {
                 std::cout << "You may tried multiple times and failed" << std::endl;
@@ -38,9 +40,15 @@ int main()
                 std::cout << "Sign up terminated" << std::endl;
             }
             else {
+                // Getting the second return which is the account
                 temp_user = std::get<1>(Get_info);
                 User.push_back(temp_user);
+                // Quick sort is used before rewriting the list of account to the csv file
+                // to sort the account alphabetically based on usernames
                 BANK::quicksort(User, 0, User.size() - 1);
+                // Calling the Account_List function with flag 1 to command that the
+                // function is called to rewrite the contents of the account alongside
+                // with new created account done by Sign_up
                 BANK::Account_List(1, User);
                 std::cout << "Signed an Account successfully" << std::endl;
                 std::cout << "You may now log in" << std::endl;

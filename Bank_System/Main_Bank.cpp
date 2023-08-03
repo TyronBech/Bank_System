@@ -13,7 +13,7 @@ void BANK::Main_Bank(user::Account& User) {
 		std::cout << "3 - Withdraw" << std::endl;
 		std::cout << "4 - Delete account" << std::endl;
 		std::cout << "5 - Profile" << std::endl;
-		std::cout << "6 - Exit" << std::endl;
+		std::cout << "6 - Log out" << std::endl;
 		std::cout << "Enter your choice: ";
 		std::cin >> choice;
 		switch (choice) {
@@ -35,6 +35,9 @@ void BANK::Main_Bank(user::Account& User) {
 		}
 	} while (choice != 6);
 }
+// Deposit function is used to let the user deposit certain amount of money
+// The deposit function function automatically deduct user's deposit based
+// the amount in 5% maximum of 500, it also checks if the deposit is valid or not
 void Deposit(user::Account& User) {
 	double amount = 0;
 	std::cout << "Deposit Section" << std::endl;
@@ -55,6 +58,10 @@ void Deposit(user::Account& User) {
 		std::cout << "Updated balance: " << User.get_Balance() << std::endl;
 	}
 }
+// Withdraw function is used to let the user get a certain amount on his/her account
+// This function deducts user's withdrawal based on amount in 5% maximum of 500
+// It also checks if the input amount is valid and if the amount is sufficient for
+// user's withdrawal
 void Withdraw(user::Account& User) {
 	double amount;
 	std::cout << "Withdraw Section" << std::endl;
