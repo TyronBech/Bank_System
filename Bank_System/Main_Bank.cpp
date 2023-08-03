@@ -29,6 +29,7 @@ bool BANK::Main_Bank(user::Account& User) {
 		case 4: User.Profile_Info();
 			break;
 		case 5: return true;
+			break;
 		case 6: // Exit case
 			break;
 		default: std::cout << "That is a invalid choice" << std::endl;
