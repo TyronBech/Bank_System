@@ -20,4 +20,5 @@ namespace BANK {
 	size_t partition(std::vector<user::Account>& arr, size_t low, size_t high);
 	void quicksort(std::vector<user::Account>& arr, size_t low, size_t high);
 	size_t binary_search(std::vector<user::Account> arr, const std::string target);
+	void Delete(std::vector<user::Account>& Data, user::Account User);
 }

@@ -4,7 +4,16 @@
 // Account_List function
 std::vector<user::Account> Retrieve();
 void Rewrite(std::vector<user::Account>& user);
-void Delete(std::vector<user::Account>& Data, user::Account User);
+
+void BANK::Delete(std::vector<user::Account>& Data, user::Account User) {
+	BANK::Account_List(0, Data);
+	size_t index = BANK::binary_search(Data, User.get_Username());
+	if (index < Data.size()) {
+		Data.erase(Data.begin() + index);
+		BANK::Account_List(1, Data);
+	}
+	else std::cout << "Cannot Find the username in the database" << std::endl;
+}
 
 void BANK::Account_List(unsigned flag, std::vector<user::Account>& List_of_Accounts) {
 	switch (flag) {

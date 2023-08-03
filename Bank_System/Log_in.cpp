@@ -1,14 +1,4 @@
 #include"functions.h"
-
-void Delete(std::vector<user::Account>& Data, user::Account User) {
-	BANK::Account_List(0, Data);
-	size_t index = BANK::binary_search(Data, User.get_Username());
-	if (index < Data.size()) {
-		Data.erase(Data.begin() + index);
-		BANK::Account_List(1, Data);
-	}
-	else std::cout << "Cannot Find the username in the database" << std::endl;
-}
 /// <summary>
 /// This log in function is used to input user's username & password
 /// it check if the input is equal to the existing account and if its correct,
@@ -40,7 +30,7 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 			if (input_pass == Data[index].get_Password()) {
 				result = BANK::Main_Bank(Data[index], index);
 				if (result) {
-					Delete(Data, Data[index]);
+					BANK::Delete(Data, Data[index]);
 				}
 				BANK::Account_List(2, Data);
 				return true;
