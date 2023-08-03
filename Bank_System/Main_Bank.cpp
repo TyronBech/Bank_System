@@ -2,8 +2,9 @@
 
 void Deposit(user::Account& User);
 void Withdraw(user::Account& User);
-void Delete(user::Account& User);
-
+// Main_Bank is a function to do the transactions
+// User can deposit, withdraw, check balance, view
+// profile, and delete an account
 bool BANK::Main_Bank(user::Account& User) {
 	unsigned choice = 0;
 	do {
@@ -89,16 +90,4 @@ void Withdraw(user::Account& User) {
 		}
 		std::cout << "Updated balance: " << User.get_Balance() << std::endl;
 	}
-}
-void Delete(user::Account& User) {
-	std::ofstream outFile;
-	std::ifstream inFile;
-	std::vector<user::Account> Data;
-	BANK::Account_List(0, Data);
-	size_t index = BANK::binary_search(Data, User.get_Username());
-	if (index < Data.size()) {
-		Data.erase(Data.begin() + index);
-		BANK::Account_List(1, Data);
-	}
-	else std::cout << "Cannot Find the username in the database" << std::endl;
 }
