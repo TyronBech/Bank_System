@@ -16,6 +16,7 @@ int main()
     // Main menu where program is going the let the user to choose
     // based on available choices and check it to the switch case
     do {
+        system("cls");
         std::cout << "C++ Bank" << std::endl;
         std::cout << "Welcome" << std::endl;
         std::cout << "1 - Log in" << std::endl;
@@ -59,5 +60,6 @@ int main()
         default: std::cout << "That is a invalid choice" << std::endl;
         }
         if (!result) break;
+        system("pause");
     } while (choice != 3);
 }

@@ -39,6 +39,9 @@
     <ClCompile Include="Sort_Search.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="gotoxy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="functions.h">

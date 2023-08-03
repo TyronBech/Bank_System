@@ -33,10 +33,10 @@ bool BANK::Main_Bank(user::Account& User) {
 		case 5: if (User.get_Balance() >= 50) {
 			std::cout << "You still have 50 or above amount" << std::endl;
 			std::cout << "in the account, cannot delete account" << std::endl;
-		}
-			  else {
+			}
+			else {
 			return true;
-		}
+			}
 			break;
 		case 6: // Exit case
 			break;
@@ -75,7 +75,7 @@ void Deposit(user::Account& User) {
 void Withdraw(user::Account& User) {
 	double amount;
 	std::cout << "Withdraw Section" << std::endl;
-	std::cout << "Enter the amount you want to deposit: ";
+	std::cout << "Enter the amount you want to withdraw: ";
 	std::cin >> amount;
 	if (amount <= 0) std::cout << "That is a invalid amount" << std::endl;
 	else if (amount > 0 && amount <= 500 && amount > User.get_Balance())

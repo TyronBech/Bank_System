@@ -1,5 +1,4 @@
 #include"functions.h"
-
 // This function is used to check if the user input a
 // non-alphabetic character to his/her name
 bool Name_checker(const std::string name) {

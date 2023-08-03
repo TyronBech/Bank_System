@@ -21,4 +21,5 @@ namespace BANK {
 	size_t binary_search(std::vector<user::Account> arr, const std::string target);
 	void Delete(std::vector<user::Account>& Data, user::Account& User);
 	void BubbleSort(std::vector<user::Account>& User);
+	void gotoxy(short x, short y);
 }
