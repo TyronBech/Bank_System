@@ -4,6 +4,7 @@
 // Account_List function
 std::vector<user::Account> Retrieve();
 void Rewrite(std::vector<user::Account>& user);
+void Delete(std::vector<user::Account>& Data, user::Account User);
 
 void BANK::Account_List(unsigned flag, std::vector<user::Account>& List_of_Accounts) {
 	switch (flag) {

@@ -2,8 +2,9 @@
 
 void Deposit(user::Account& User);
 void Withdraw(user::Account& User);
+void Delete(user::Account& User);
 
-void BANK::Main_Bank(user::Account& User) {
+bool BANK::Main_Bank(user::Account& User, size_t index) {
 	unsigned choice = 0;
 	do {
 		std::cout << "C++ Bank" << std::endl;
@@ -11,8 +12,8 @@ void BANK::Main_Bank(user::Account& User) {
 		std::cout << "1 - Check Balance" << std::endl;
 		std::cout << "2 - Deposit" << std::endl;
 		std::cout << "3 - Withdraw" << std::endl;
-		std::cout << "4 - Delete account" << std::endl;
-		std::cout << "5 - Profile" << std::endl;
+		std::cout << "4 - Profile" << std::endl;
+		std::cout << "5 - Delete account" << std::endl;
 		std::cout << "6 - Log out" << std::endl;
 		std::cout << "Enter your choice: ";
 		std::cin >> choice;
@@ -25,15 +26,15 @@ void BANK::Main_Bank(user::Account& User) {
 			break;
 		case 3: Withdraw(User);
 			break;
-		case 4:
+		case 4: User.Profile_Info();
 			break;
-		case 5: User.Profile_Info();
-			break;
+		case 5: return true;
 		case 6: // Exit case
 			break;
 		default: std::cout << "That is a invalid choice" << std::endl;
 		}
 	} while (choice != 6);
+	return false;
 }
 // Deposit function is used to let the user deposit certain amount of money
 // The deposit function function automatically deduct user's deposit based
@@ -87,4 +88,16 @@ void Withdraw(user::Account& User) {
 		}
 		std::cout << "Updated balance: " << User.get_Balance() << std::endl;
 	}
+}
+void Delete(user::Account& User) {
+	std::ofstream outFile;
+	std::ifstream inFile;
+	std::vector<user::Account> Data;
+	BANK::Account_List(0, Data);
+	size_t index =  BANK::binary_search(Data, User.get_Username());
+	if (index < Data.size()) {
+		Data.erase(Data.begin() + index);
+		BANK::Account_List(1, Data);
+	}
+	else std::cout << "Cannot Find the username in the database" << std::endl;
 }
