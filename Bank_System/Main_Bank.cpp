@@ -5,6 +5,7 @@ void Withdraw(user::Account& User);
 // Main_Bank is a function to do the transactions
 // User can deposit, withdraw, check balance, view
 // profile, and delete an account
+// The function is called only if log_in is successful
 bool BANK::Main_Bank(user::Account& User) {
 	unsigned choice = 0;
 	do {
