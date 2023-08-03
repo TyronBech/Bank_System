@@ -1,27 +1,5 @@
 #include"functions.h"
 
-// partition function is used to sort actiually the quicksort based on pivot
-size_t BANK::partition(std::vector<user::Account>& arr, size_t low, size_t high) {
-	std::string pivot = arr[high].get_Username();
-	size_t i = low - 1;
-
-	for (size_t j = low; j < high; j++) {
-		if (arr[j].get_Username() < pivot) {
-			i++;
-			std::swap(arr[i], arr[j]);
-		}
-	}
-	std::swap(arr[i + 1], arr[high]);
-	return i + 1;
-}
-// it is used to sort the vector of account for the binary search
-void BANK::quicksort(std::vector<user::Account>& arr, size_t low, size_t high) {
-	if (low < high) {
-		size_t pivot = partition(arr, low, high);
-		quicksort(arr, low, pivot - 1);
-		quicksort(arr, pivot + 1, high);
-	}
-}
 // The binary search will help minimize the search time
 // The parameter arr will be the vector handling all the accounts to find
 // target is the searching point of the function if there is no equality
@@ -37,4 +15,18 @@ size_t BANK::binary_search(std::vector<user::Account> arr, const std::string tar
 		else high = mid - 1;
 	}
 	return -1;
+}
+// The sorting method is changed from quicksort to bubble sort because of 
+// vector related issues, bubble sort chosen since number of accounts
+// is not big for efficient sorting
+void BANK::BubbleSort(std::vector<user::Account>& User) {
+	for (size_t i = 0; i < User.size(); i++) {
+		for(size_t j = 0; j < User.size() - 1; j++) {
+			if (User[j].get_Username() > User[j + 1].get_Username()) {
+				user::Account temp = User[j];
+				User[j] = User[j + 1];
+				User[j + 1] = temp;
+			}
+		}
+	}
 }

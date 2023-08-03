@@ -17,10 +17,10 @@ void BANK::Delete(std::vector<user::Account>& Data, user::Account User) {
 
 void BANK::Account_List(unsigned flag, std::vector<user::Account>& List_of_Accounts) {
 	switch (flag) {
-	// Retrieve all the contents/Accounts inside the csv file
+		// Retrieve all the contents/Accounts inside the csv file
 	case 0: List_of_Accounts = Retrieve();
 		break;
-	// Append an account to csv file
+		// Append an account to csv file
 	case 1: Rewrite(List_of_Accounts);
 		break;
 	}

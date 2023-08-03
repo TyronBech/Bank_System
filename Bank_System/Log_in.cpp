@@ -18,7 +18,7 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 		std::getline(std::cin >> std::ws, input_username);
 		std::cout << "Enter a password: ";
 		std::getline(std::cin >> std::ws, input_pass);
-		size_t index = BANK::binary_search(Data,input_username);
+		size_t index = BANK::binary_search(Data, input_username);
 		// This part will check is the account exist and if the
 		// input password is correct
 		if (index == -1) {
@@ -28,11 +28,10 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 		}
 		else {
 			if (input_pass == Data[index].get_Password()) {
-				result = BANK::Main_Bank(Data[index], index);
+				result = BANK::Main_Bank(Data[index]);
 				if (result) {
 					BANK::Delete(Data, Data[index]);
 				}
-				BANK::Account_List(2, Data);
 				return true;
 			}
 			else {

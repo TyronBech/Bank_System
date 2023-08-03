@@ -1,4 +1,4 @@
-﻿#include"functions.h"
+﻿#include "functions.h"
 // Main function of the program
 int main()
 {
@@ -25,11 +25,11 @@ int main()
         std::cin >> choice;
         // Switch case is used to check the user's input
         switch (choice) {
-        // Case 1 if for log in and directing to the Main_Bank function
+            // Case 1 if for log in and directing to the Main_Bank function
         case 1: result = BANK::Log_in(User);
             if (result) BANK::Account_List(1, User);
             break;
-        // Case 2 is for sign up
+            // Case 2 is for sign up
         case 2: Get_info = BANK::Sign_up();
             // Getting the first return which the boolean result to be check
             // if the sign up is successful
@@ -43,9 +43,9 @@ int main()
                 // Getting the second return which is the account
                 temp_user = std::get<1>(Get_info);
                 User.push_back(temp_user);
-                // Quick sort is used before rewriting the list of account to the csv file
+                // Bubble sort is used before rewriting the list of account to the csv file
                 // to sort the account alphabetically based on usernames
-                BANK::quicksort(User, 0, User.size() - 1);
+                BANK::BubbleSort(User);
                 // Calling the Account_List function with flag 1 to command that the
                 // function is called to rewrite the contents of the account alongside
                 // with new created account done by Sign_up

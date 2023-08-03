@@ -4,7 +4,7 @@ void Deposit(user::Account& User);
 void Withdraw(user::Account& User);
 void Delete(user::Account& User);
 
-bool BANK::Main_Bank(user::Account& User, size_t index) {
+bool BANK::Main_Bank(user::Account& User) {
 	unsigned choice = 0;
 	do {
 		std::cout << "C++ Bank" << std::endl;
@@ -18,7 +18,7 @@ bool BANK::Main_Bank(user::Account& User, size_t index) {
 		std::cout << "Enter your choice: ";
 		std::cin >> choice;
 		switch (choice) {
-		case 1: 
+		case 1:
 			std::cout << "Balance Section" << std::endl;
 			std::cout << "Your current balance: " << User.get_Balance() << std::endl;
 			break;
@@ -94,7 +94,7 @@ void Delete(user::Account& User) {
 	std::ifstream inFile;
 	std::vector<user::Account> Data;
 	BANK::Account_List(0, Data);
-	size_t index =  BANK::binary_search(Data, User.get_Username());
+	size_t index = BANK::binary_search(Data, User.get_Username());
 	if (index < Data.size()) {
 		Data.erase(Data.begin() + index);
 		BANK::Account_List(1, Data);

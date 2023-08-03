@@ -1,6 +1,7 @@
 #pragma once
 // Incluced C++ libraries
 #include"Account.h"
+#include<iostream>
 #include<string>
 #include<vector>
 #include<sstream>
@@ -16,9 +17,10 @@ namespace BANK {
 	std::tuple<bool, user::Account> Sign_up();
 	void Account_List(unsigned flag, std::vector<user::Account>& List_of_Accounts);
 	bool Log_in(std::vector<user::Account>& Data);
-	bool Main_Bank(user::Account& User, size_t index);
+	bool Main_Bank(user::Account& User);
 	size_t partition(std::vector<user::Account>& arr, size_t low, size_t high);
 	void quicksort(std::vector<user::Account>& arr, size_t low, size_t high);
 	size_t binary_search(std::vector<user::Account> arr, const std::string target);
 	void Delete(std::vector<user::Account>& Data, user::Account User);
+	void BubbleSort(std::vector<user::Account>& User);
 }
