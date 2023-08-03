@@ -134,6 +134,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Main_Bank.cpp" />
     <ClCompile Include="Sign_up.cpp" />
+    <ClCompile Include="Sort_Search.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Account.h" />

@@ -1,4 +1,4 @@
-#include"functions.h"
+﻿#include"functions.h"
 // Main function of the program
 int main()
 {
@@ -34,12 +34,13 @@ int main()
             result = std::get<0>(Get_info);
             if (!result) {
                 std::cout << "You may tried multiple times and failed" << std::endl;
-                std::cout << "or encounter error during signe up" << std::endl;
+                std::cout << "or encounter error during sign up" << std::endl;
                 std::cout << "Sign up terminated" << std::endl;
             }
             else {
                 temp_user = std::get<1>(Get_info);
                 User.push_back(temp_user);
+                BANK::quicksort(User, 0, User.size() - 1);
                 BANK::Account_List(1, User);
                 std::cout << "Signed an Account successfully" << std::endl;
                 std::cout << "You may now log in" << std::endl;

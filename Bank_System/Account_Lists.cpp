@@ -3,7 +3,6 @@
 // Declared functions. All the initialization is below the
 // Account_List function
 std::vector<user::Account> Retrieve();
-void Append(std::vector<user::Account>& user);
 void Rewrite(std::vector<user::Account>& user);
 
 void BANK::Account_List(unsigned flag, std::vector<user::Account>& List_of_Accounts) {
@@ -27,7 +26,7 @@ std::vector<user::Account> Retrieve() {
 	std::string name = "", gender = "", birthdate = "";
 	std::string username = "", userpass = "";
 	unsigned age = 0, id = 0, i = 0;
-	long balance = 0;
+	double balance = 0;
 	char dash;
 	inFile.open("Account_Lists.csv", std::ios::in);
 	if (inFile.is_open()) {

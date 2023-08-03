@@ -11,8 +11,9 @@ void BANK::Main_Bank(user::Account& User) {
 		std::cout << "1 - Check Balance" << std::endl;
 		std::cout << "2 - Deposit" << std::endl;
 		std::cout << "3 - Withdraw" << std::endl;
-		std::cout << "4 - Profile" << std::endl;
-		std::cout << "5 - Exit" << std::endl;
+		std::cout << "4 - Delete account" << std::endl;
+		std::cout << "5 - Profile" << std::endl;
+		std::cout << "6 - Exit" << std::endl;
 		std::cout << "Enter your choice: ";
 		std::cin >> choice;
 		switch (choice) {
@@ -24,13 +25,15 @@ void BANK::Main_Bank(user::Account& User) {
 			break;
 		case 3: Withdraw(User);
 			break;
-		case 4: User.Profile_Info();
+		case 4:
 			break;
-		case 5: // Exit case
+		case 5: User.Profile_Info();
+			break;
+		case 6: // Exit case
 			break;
 		default: std::cout << "That is a invalid choice" << std::endl;
 		}
-	} while (choice != 5);
+	} while (choice != 6);
 }
 void Deposit(user::Account& User) {
 	double amount = 0;
