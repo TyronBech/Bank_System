@@ -19,6 +19,6 @@ namespace BANK {
 	bool Log_in(std::vector<user::Account>& Data);
 	bool Main_Bank(user::Account& User);
 	size_t binary_search(std::vector<user::Account> arr, const std::string target);
-	void Delete(std::vector<user::Account>& Data, user::Account User);
+	void Delete(std::vector<user::Account>& Data, user::Account& User);
 	void BubbleSort(std::vector<user::Account>& User);
 }

@@ -7,7 +7,7 @@ void Rewrite(std::vector<user::Account>& user);
 // Delete function is used to delete an existing account to the csv file
 // It is independent to the other functions of Account_Lists.cpp because
 // of different approach on function calling
-void BANK::Delete(std::vector<user::Account>& Data, user::Account User) {
+void BANK::Delete(std::vector<user::Account>& Data, user::Account& User) {
 	size_t index = BANK::binary_search(Data, User.get_Username());
 	if (index < Data.size()) {
 		Data.erase(Data.begin() + index);

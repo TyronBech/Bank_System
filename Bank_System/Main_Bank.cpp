@@ -30,7 +30,13 @@ bool BANK::Main_Bank(user::Account& User) {
 			break;
 		case 4: User.Profile_Info();
 			break;
-		case 5: return true;
+		case 5: if (User.get_Balance() >= 50) {
+			std::cout << "You still have 50 or above amount" << std::endl;
+			std::cout << "in the account, cannot delete account" << std::endl;
+		}
+			  else {
+			return true;
+		}
 			break;
 		case 6: // Exit case
 			break;
