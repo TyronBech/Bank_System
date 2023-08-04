@@ -1,5 +1,7 @@
 ﻿#include "functions.h"
 // Main function of the program
+
+void Display();
 int main()
 {
     // vector that handle all the accounts during program execution
@@ -13,6 +15,7 @@ int main()
     BANK::Account_List(0, User);
     unsigned choice = 0;
     bool result;
+    Display();
     // Main menu where program is going the let the user to choose
     // based on available choices and check it to the switch case
     do {
@@ -62,4 +65,22 @@ int main()
         if (!result) break;
         system("pause");
     } while (choice != 3);
+}
+void Display() {
+    // ASCII Drawing (Keyboard) for the title page of the program
+    /// @author Nieminen Mika
+    /// Link: https://www.asciiart.eu/computers/keyboards
+    system("cls");
+    BANK::gotoxy(29, 1); std::cout << ",---,---,---,---,---,---,---,---,---,---,---,---,---,-------," << std::endl;
+    BANK::gotoxy(29, 2); std::cout << "|1/2| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | + | ' | <-    |" << std::endl;
+    BANK::gotoxy(29, 3); std::cout << "|---'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-----|" << std::endl;
+    BANK::gotoxy(29, 4); std::cout << "| ->| | Q | W | E | R | T | Y | U | I | O | P | ] | ^ |     |" << std::endl;
+    BANK::gotoxy(29, 5); std::cout << "|-----',--'---'---'---'---'---'---'---'---'---',--',--'|    |" << std::endl;
+    BANK::gotoxy(29, 6); std::cout << "| Caps |     C   +   +       B   A   N   K     | [ | * |    |" << std::endl;
+    BANK::gotoxy(29, 7); std::cout << "|----,-'-,---,---,---,---,---,---,---,---,---,-'-,-'---'----|" << std::endl;
+    BANK::gotoxy(29, 8); std::cout << "|    | < | Z | X | C | V | B | N | M | , | . | - |          |" << std::endl;
+    BANK::gotoxy(29, 9); std::cout << "|----'-,-',--'--,'---'---'---'---'---'---'-,-'---',--,------|" << std::endl;
+    BANK::gotoxy(29, 10); std::cout << "| ctrl |  | alt |                          |altgr |  | ctrl |" << std::endl;
+    BANK::gotoxy(29, 11); std::cout << "'------'  '-----'--------------------------'------'  '------'" << std::endl;
+    system("pause");
 }
