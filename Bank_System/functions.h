@@ -11,6 +11,7 @@
 #include<limits>
 #include<cctype>
 #include<tuple>
+#include<thread>
 namespace BANK {
 	// Declaration of all important functions of the program
 	// Each functions is initialized in a separated .cpp files

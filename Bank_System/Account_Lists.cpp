@@ -13,7 +13,9 @@ void BANK::Delete(std::vector<user::Account>& Data, user::Account& User) {
 		Data.erase(Data.begin() + index);
 		BANK::Account_List(1, Data);
 	}
-	else std::cout << "Cannot Find the username in the database" << std::endl;
+	else {
+		BANK::gotoxy(40, 14); std::cout << "Cannot Find the username in the database" << std::endl;
+	}
 }
 // Account_List is a function that handle account in the csv file
 // it retrieve and rewrite the contents of the csv file
@@ -84,9 +86,13 @@ void Rewrite(std::vector<user::Account>& user) {
 					<< user[i].get_Password() << ',' << user[i].get_Balance() << '\n';
 			}
 		}
-		else std::cerr << "The file did not open" << std::endl;
+		else {
+			BANK::gotoxy(49, 14); std::cerr << "The file did not open" << std::endl;
+		}
 		outFile.close();
 	}
-	else std::cerr << "The file did not open" << std::endl;
+	else {
+		BANK::gotoxy(49, 14); std::cerr << "The file did not open" << std::endl;
+	}
 	outFile.close();
 }

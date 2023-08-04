@@ -21,18 +21,20 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 	// the counter resets in each inputs
 	unsigned counter = 1;
 	// This is the part where user input his/her information
-	std::cout << "Sign Up Section" << std::endl;
 	do {
-		std::cout << "Enter your name: ";
+		system("cls");
+		BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
+		BANK::gotoxy(48, 12); std::cout << "Enter your name: ";
 		std::getline(std::cin >> std::ws, name);
 		set_name = Name_checker(name);
 		if (!set_name) {
-			std::cout << "Your name contains non-alphabetic characters" << std::endl;
-			std::cout << "Please try again" << std::endl;
+			BANK::gotoxy(37, 14); std::cout << "Your name contains non-alphabetic characters" << std::endl;
+			BANK::gotoxy(51, 15); std::cout << "Please try again" << std::endl;
 			counter++;
 		}
 		else break;
 		if (counter > 3) return std::make_tuple(false, User);
+		system("pause>0");
 	} while (true);
 	counter = 1;
 	// Lambda function to setup user's birthdate
@@ -43,14 +45,18 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 		time_t now = time(0);
 		std::tm Local_Time;
 		if (localtime_s(&Local_Time, &now) != 0) {
-			std::cerr << "Error: Local Time failed" << std::endl;
+			system("cls");
+			BANK::gotoxy(47, 11); std::cerr << "Error: Local Time failed" << std::endl;
+			system("pause>0");
 			return false;
 		}
 		signed day, month, year;
 		char dash = '-', input_dash;
 		do {
-			std::cout << "Ex: 01-02-2003" << std::endl;
-			std::cout << "Enter your birthdate(dd/mm/yyy): ";
+			system("cls");
+			BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
+			BANK::gotoxy(48, 12); std::cout << "Ex: 01-02-2003" << std::endl;
+			BANK::gotoxy(48, 13); std::cout << "Enter your birthdate(dd/mm/yyy): ";
 			// input inside if statement will help to extract the input of the user
 			// in proper format
 			if (std::cin >> day && day <= 31 && day >= 1 &&
@@ -76,12 +82,13 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 			// If the user did not satify the requirements, it won't bind
 			// the input dates together and user will input the date again
 			else {
-				std::cout << "You entered a birthdate in wrong format" << std::endl;
-				std::cout << "Please try again" << std::endl;
+				BANK::gotoxy(40, 15); std::cout << "You entered a birthdate in wrong format" << std::endl;
+				BANK::gotoxy(52, 16); std::cout << "Please try again" << std::endl;
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				counter++;
 			}
 			if (counter > 3) return false;
+			system("pause>0");
 		} while (true);
 		return false;
 	};
@@ -92,27 +99,32 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 	char gender;
 	do {
 		// User will choose one of the availble genders including LGBTQ+
-		std::cout << "Enter your gender:" << std::endl;
-		std::cout << "A. Male" << std::endl;
-		std::cout << "B. Female" << std::endl;
-		std::cout << "C. LGBTQ+" << std::endl;
-		std::cout << "Enter your choice: ";
+		system("cls");
+		BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
+		BANK::gotoxy(48, 12); std::cout << "Enter your gender:" << std::endl;
+		BANK::gotoxy(48, 13); std::cout << "A. Male" << std::endl;
+		BANK::gotoxy(48, 14); std::cout << "B. Female" << std::endl;
+		BANK::gotoxy(48, 15); std::cout << "C. LGBTQ+" << std::endl;
+		BANK::gotoxy(48, 16); std::cout << "Enter your choice: ";
 		std::cin >> gender;
 		gender = toupper(gender);
 		if (gender != 'A' && gender != 'B' && gender != 'C') {
-			std::cout << "That is a invalid choice" << std::endl;
-			std::cout << "Please try again" << std::endl;
+			BANK::gotoxy(48, 17); std::cout << "That is a invalid choice" << std::endl;
+			BANK::gotoxy(48, 18); std::cout << "Please try again" << std::endl;
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			counter++;
 		}
 		else break;
 		if (counter > 3) return std::make_tuple(false, User);
+		system("pause>0");
 	} while (true);
 	// Username and password input
+	system("cls");
 	std::string username = "", userpass = "";
-	std::cout << "Enter a username: ";
+	BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
+	BANK::gotoxy(48, 12); std::cout << "Enter a username: ";
 	std::getline(std::cin >> std::ws, username);
-	std::cout << "Enter a password: ";
+	BANK::gotoxy(48, 13); std::cout << "Enter a password: ";
 	std::getline(std::cin >> std::ws, userpass);
 	succeed = true;
 	// If the input succeeded all the information stored in the
