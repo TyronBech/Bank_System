@@ -14,7 +14,7 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 	bool result;
 	do {
 		system("cls");
-		BANK::Design();
+		BANK::Design(0);
 		BANK::Color(2);
 		BANK::gotoxy(53, 10); std::cout << "Log In Section" << std::endl;
 		BANK::gotoxy(48, 12); std::cout << "Enter username: ";
@@ -25,6 +25,7 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 		// This part will check is the account exist and if the
 		// input password is correct
 		if (index == -1) {
+			BANK::Color(4);
 			BANK::gotoxy(43, 15); std::cout << "Sorry there is no existing account" << std::endl;
 			BANK::gotoxy(47, 16); std::cout << "Please try another account" << std::endl;
 			counter++;
@@ -38,6 +39,7 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 				return true;
 			}
 			else {
+				BANK::Color(4);
 				BANK::gotoxy(44, 15); std::cout << "The input password is incorrect" << std::endl;
 				BANK::gotoxy(52, 16); std::cout << "Please try again" << std::endl;
 				counter++;
@@ -45,8 +47,8 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 		}
 		if (counter > 3) {
 			system("cls");
-			BANK::Design();
-			BANK::Color(2);
+			BANK::Design(0);
+			BANK::Color(4);
 			BANK::gotoxy(47, 12); std::cout << "You have tried many times" << std::endl;
 			BANK::gotoxy(50, 13); std::cout << "Log in is terminated" << std::endl;
 			system("pause>0");

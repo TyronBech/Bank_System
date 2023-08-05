@@ -5,6 +5,7 @@ bool Name_checker(const std::string name) {
 	for (size_t i = 0; i < name.length(); i++) {
 		if (isalpha(name[i])) continue;
 		else if (name[i] == ' ') continue;
+		else if (name[i] == '.') continue;
 		else return false;
 	}
 	return true;
@@ -23,13 +24,14 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 	// This is the part where user input his/her information
 	do {
 		system("cls");
-		BANK::Design();
+		BANK::Design(0);
 		BANK::Color(2);
 		BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
 		BANK::gotoxy(48, 12); std::cout << "Enter your name: ";
 		std::getline(std::cin >> std::ws, name);
 		set_name = Name_checker(name);
 		if (!set_name) {
+			BANK::Color(4);
 			BANK::gotoxy(37, 14); std::cout << "Your name contains non-alphabetic characters" << std::endl;
 			BANK::gotoxy(51, 15); std::cout << "Please try again" << std::endl;
 			counter++;
@@ -48,8 +50,8 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 		std::tm Local_Time;
 		if (localtime_s(&Local_Time, &now) != 0) {
 			system("cls");
-			BANK::Design();
-			BANK::Color(2);
+			BANK::Design(0);
+			BANK::Color(4);
 			BANK::gotoxy(47, 11); std::cerr << "Error: Local Time failed" << std::endl;
 			system("pause>0");
 			return false;
@@ -58,7 +60,7 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 		char dash = '-', input_dash;
 		do {
 			system("cls");
-			BANK::Design();
+			BANK::Design(0);
 			BANK::Color(2);
 			BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
 			BANK::gotoxy(48, 12); std::cout << "Ex: 01-02-2003" << std::endl;
@@ -88,8 +90,10 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 			// If the user did not satify the requirements, it won't bind
 			// the input dates together and user will input the date again
 			else {
+				BANK::Color(4);
 				BANK::gotoxy(40, 15); std::cout << "You entered a birthdate in wrong format" << std::endl;
 				BANK::gotoxy(52, 16); std::cout << "Please try again" << std::endl;
+				std::cin.clear();
 				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 				counter++;
 			}
@@ -106,7 +110,7 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 	do {
 		// User will choose one of the availble genders including LGBTQ+
 		system("cls");
-		BANK::Design();
+		BANK::Design(0);
 		BANK::Color(2);
 		BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
 		BANK::gotoxy(48, 12); std::cout << "Enter your gender:" << std::endl;
@@ -117,6 +121,7 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 		std::cin >> gender;
 		gender = toupper(gender);
 		if (gender != 'A' && gender != 'B' && gender != 'C') {
+			BANK::Color(4);
 			BANK::gotoxy(48, 17); std::cout << "That is a invalid choice" << std::endl;
 			BANK::gotoxy(48, 18); std::cout << "Please try again" << std::endl;
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -128,7 +133,7 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 	} while (true);
 	// Username and password input
 	system("cls");
-	BANK::Design();
+	BANK::Design(0);
 	BANK::Color(2);
 	std::string username = "", userpass = "";
 	BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;

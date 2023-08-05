@@ -21,7 +21,7 @@ int main()
     // based on available choices and check it to the switch case
     do {
         system("cls");
-        BANK::Design();
+        BANK::Design(0);
         BANK::Color(2);
         BANK::gotoxy(56, 10); std::cout << "C++ Bank" << std::endl;
         BANK::gotoxy(54, 11); std::cout << "Welcome User" << std::endl;
@@ -29,9 +29,10 @@ int main()
         BANK::gotoxy(53, 14); std::cout << "2 - Sign up" << std::endl;
         BANK::gotoxy(53, 15); std::cout << "3 - Exit" << std::endl;
         BANK::gotoxy(51, 16); std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        choice = BANK::Try_catch_int(static_cast<long long>(choice));
         // Switch case is used to check the user's input
         switch (choice) {
+        case 0: break;
             // Case 1 if for log in and directing to the Main_Bank function
         case 1: result = BANK::Log_in(User);
             if (result) BANK::Account_List(1, User);
@@ -43,8 +44,8 @@ int main()
             result = std::get<0>(Get_info);
             if (!result) {
                 system("cls");
-                BANK::Design();
-                BANK::Color(2);
+                BANK::Design(0);
+                BANK::Color(4);
                 BANK::gotoxy(40, 12); std::cout << "You may tried multiple times and failed" << std::endl;
                 BANK::gotoxy(43, 13); std::cout << "or encounter error during sign up" << std::endl;
                 BANK::gotoxy(51, 14); std::cout << "Sign up terminated" << std::endl;
@@ -62,7 +63,7 @@ int main()
                 // with new created account done by Sign_up
                 BANK::Account_List(1, User);
                 system("cls");
-                BANK::Design();
+                BANK::Design(0);
                 BANK::Color(2);
                 BANK::gotoxy(45, 12); std::cout << "Signed an account successfully" << std::endl;
                 BANK::gotoxy(51, 13); std::cout << "You may now log in" << std::endl;
@@ -70,11 +71,19 @@ int main()
             break;
         case 3: // Exit case
             break;
-        default: BANK::gotoxy(48, 17); std::cout << "That is a invalid choice" << std::endl;
+        default: BANK::Color(4);
+            BANK::gotoxy(48, 17); std::cout << "That is a invalid choice" << std::endl;
             system("pause>0");
         }
     } while (choice != 3);
-    system("cls");
+    for (int i = 0; i < 50; i++) {
+        system("cls");
+        BANK::Design(1);
+        BANK::Color(2);
+        BANK::gotoxy(46, 11); std::cout << "Thank you for using C++ Bank" << std::endl;
+        BANK::gotoxy(54, 12); std::cout << "See you again" << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
     return 0;
 }
 void Display() {
@@ -83,7 +92,7 @@ void Display() {
     /// @author Nieminen Mika
     // Link: https://www.asciiart.eu/computers/keyboards
     system("cls");
-    BANK::Design();
+    BANK::Design(0);
     BANK::gotoxy(30, 9); std::cout << ",---,---,---,---,---,---,---,---,---,---,---,---,---,-------," << std::endl;
     BANK::gotoxy(30, 10); std::cout << "|1/2| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | + | ' | <-    |" << std::endl;
     BANK::gotoxy(30, 11); std::cout << "|---'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-----|" << std::endl;

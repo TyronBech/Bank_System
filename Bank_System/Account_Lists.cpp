@@ -14,6 +14,7 @@ void BANK::Delete(std::vector<user::Account>& Data, user::Account& User) {
 		BANK::Account_List(1, Data);
 	}
 	else {
+		BANK::Color(4);
 		BANK::gotoxy(40, 14); std::cout << "Cannot Find the username in the database" << std::endl;
 	}
 }
@@ -87,11 +88,13 @@ void Rewrite(std::vector<user::Account>& user) {
 			}
 		}
 		else {
+			BANK::Color(4);
 			BANK::gotoxy(49, 14); std::cerr << "The file did not open" << std::endl;
 		}
 		outFile.close();
 	}
 	else {
+		BANK::Color(4);
 		BANK::gotoxy(49, 14); std::cerr << "The file did not open" << std::endl;
 	}
 	outFile.close();

@@ -131,6 +131,7 @@
     <ClCompile Include="Account_Lists.cpp" />
     <ClCompile Include="Change_Balance.cpp" />
     <ClCompile Include="Design.cpp" />
+    <ClCompile Include="Error.cpp" />
     <ClCompile Include="gotoxy.cpp" />
     <ClCompile Include="Log_in.cpp" />
     <ClCompile Include="main.cpp" />
