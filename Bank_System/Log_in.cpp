@@ -14,6 +14,8 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 	bool result;
 	do {
 		system("cls");
+		BANK::Design();
+		BANK::Color(2);
 		BANK::gotoxy(53, 10); std::cout << "Log In Section" << std::endl;
 		BANK::gotoxy(48, 12); std::cout << "Enter username: ";
 		std::getline(std::cin >> std::ws, input_username);
@@ -43,6 +45,8 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 		}
 		if (counter > 3) {
 			system("cls");
+			BANK::Design();
+			BANK::Color(2);
 			BANK::gotoxy(47, 12); std::cout << "You have tried many times" << std::endl;
 			BANK::gotoxy(50, 13); std::cout << "Log in is terminated" << std::endl;
 			system("pause>0");

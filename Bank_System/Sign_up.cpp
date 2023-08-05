@@ -23,6 +23,8 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 	// This is the part where user input his/her information
 	do {
 		system("cls");
+		BANK::Design();
+		BANK::Color(2);
 		BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
 		BANK::gotoxy(48, 12); std::cout << "Enter your name: ";
 		std::getline(std::cin >> std::ws, name);
@@ -31,10 +33,10 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 			BANK::gotoxy(37, 14); std::cout << "Your name contains non-alphabetic characters" << std::endl;
 			BANK::gotoxy(51, 15); std::cout << "Please try again" << std::endl;
 			counter++;
+			system("pause>0");
 		}
 		else break;
 		if (counter > 3) return std::make_tuple(false, User);
-		system("pause>0");
 	} while (true);
 	counter = 1;
 	// Lambda function to setup user's birthdate
@@ -46,6 +48,8 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 		std::tm Local_Time;
 		if (localtime_s(&Local_Time, &now) != 0) {
 			system("cls");
+			BANK::Design();
+			BANK::Color(2);
 			BANK::gotoxy(47, 11); std::cerr << "Error: Local Time failed" << std::endl;
 			system("pause>0");
 			return false;
@@ -54,6 +58,8 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 		char dash = '-', input_dash;
 		do {
 			system("cls");
+			BANK::Design();
+			BANK::Color(2);
 			BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
 			BANK::gotoxy(48, 12); std::cout << "Ex: 01-02-2003" << std::endl;
 			BANK::gotoxy(48, 13); std::cout << "Enter your birthdate(dd/mm/yyy): ";
@@ -100,6 +106,8 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 	do {
 		// User will choose one of the availble genders including LGBTQ+
 		system("cls");
+		BANK::Design();
+		BANK::Color(2);
 		BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
 		BANK::gotoxy(48, 12); std::cout << "Enter your gender:" << std::endl;
 		BANK::gotoxy(48, 13); std::cout << "A. Male" << std::endl;
@@ -120,6 +128,8 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 	} while (true);
 	// Username and password input
 	system("cls");
+	BANK::Design();
+	BANK::Color(2);
 	std::string username = "", userpass = "";
 	BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
 	BANK::gotoxy(48, 12); std::cout << "Enter a username: ";

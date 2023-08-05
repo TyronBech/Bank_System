@@ -15,12 +15,14 @@ int main()
     // to note that the program should retrieve the accounts only
     BANK::Account_List(0, User);
     unsigned choice = 0;
-    bool result;
+    bool result = true;
     Display();
     // Main menu where program is going the let the user to choose
     // based on available choices and check it to the switch case
     do {
         system("cls");
+        BANK::Design();
+        BANK::Color(2);
         BANK::gotoxy(56, 10); std::cout << "C++ Bank" << std::endl;
         BANK::gotoxy(54, 11); std::cout << "Welcome User" << std::endl;
         BANK::gotoxy(53, 13); std::cout << "1 - Log in" << std::endl;
@@ -41,6 +43,8 @@ int main()
             result = std::get<0>(Get_info);
             if (!result) {
                 system("cls");
+                BANK::Design();
+                BANK::Color(2);
                 BANK::gotoxy(40, 12); std::cout << "You may tried multiple times and failed" << std::endl;
                 BANK::gotoxy(43, 13); std::cout << "or encounter error during sign up" << std::endl;
                 BANK::gotoxy(51, 14); std::cout << "Sign up terminated" << std::endl;
@@ -58,17 +62,20 @@ int main()
                 // with new created account done by Sign_up
                 BANK::Account_List(1, User);
                 system("cls");
+                BANK::Design();
+                BANK::Color(2);
                 BANK::gotoxy(45, 12); std::cout << "Signed an account successfully" << std::endl;
                 BANK::gotoxy(51, 13); std::cout << "You may now log in" << std::endl;
             }
             break;
         case 3: // Exit case
             break;
-        default: std::cout << "That is a invalid choice" << std::endl;
+        default: BANK::gotoxy(48, 17); std::cout << "That is a invalid choice" << std::endl;
+            system("pause>0");
         }
-        if (!result) break;
-        system("pause>0");
     } while (choice != 3);
+    system("cls");
+    return 0;
 }
 void Display() {
     // ASCII Drawing (Keyboard) for the title page of the program
@@ -76,16 +83,19 @@ void Display() {
     /// @author Nieminen Mika
     // Link: https://www.asciiart.eu/computers/keyboards
     system("cls");
-    BANK::gotoxy(29, 9); std::cout << ",---,---,---,---,---,---,---,---,---,---,---,---,---,-------," << std::endl;
-    BANK::gotoxy(29, 10); std::cout << "|1/2| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | + | ' | <-    |" << std::endl;
-    BANK::gotoxy(29, 11); std::cout << "|---'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-----|" << std::endl;
-    BANK::gotoxy(29, 12); std::cout << "| ->| | Q | W | E | R | T | Y | U | I | O | P | ] | ^ |     |" << std::endl;
-    BANK::gotoxy(29, 13); std::cout << "|-----',--'---'---'---'---'---'---'---'---'---',--',--'|    |" << std::endl;
-    BANK::gotoxy(29, 14); std::cout << "| Caps |     C   +   +       B   A   N   K     | [ | * |    |" << std::endl;
-    BANK::gotoxy(29, 15); std::cout << "|----,-'-,---,---,---,---,---,---,---,---,---,-'-,-'---'----|" << std::endl;
-    BANK::gotoxy(29, 16); std::cout << "|    | < | Z | X | C | V | B | N | M | , | . | - |          |" << std::endl;
-    BANK::gotoxy(29, 17); std::cout << "|----'-,-',--'--,'---'---'---'---'---'---'-,-'---',--,------|" << std::endl;
-    BANK::gotoxy(29, 18); std::cout << "| ctrl |  | alt |                          |altgr |  | ctrl |" << std::endl;
-    BANK::gotoxy(29, 19); std::cout << "'------'  '-----'--------------------------'------'  '------'" << std::endl;
-    std::this_thread::sleep_for(std::chrono::milliseconds(5000));
+    BANK::Design();
+    BANK::gotoxy(30, 9); std::cout << ",---,---,---,---,---,---,---,---,---,---,---,---,---,-------," << std::endl;
+    BANK::gotoxy(30, 10); std::cout << "|1/2| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | + | ' | <-    |" << std::endl;
+    BANK::gotoxy(30, 11); std::cout << "|---'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-----|" << std::endl;
+    BANK::gotoxy(30, 12); std::cout << "| ->| | Q | W | E | R | T | Y | U | I | O | P | ] | ^ |     |" << std::endl;
+    BANK::gotoxy(30, 13); std::cout << "|-----',--'---'---'---'---'---'---'---'---'---',--',--'|    |" << std::endl;
+    BANK::gotoxy(30, 14); std::cout << "| Caps |                                       | [ | * |    |" << std::endl;
+    BANK::gotoxy(30, 15); std::cout << "|----,-'-,---,---,---,---,---,---,---,---,---,-'-,-'---'----|" << std::endl;
+    BANK::gotoxy(30, 16); std::cout << "|    | < | Z | X | C | V | B | N | M | , | . | - |          |" << std::endl;
+    BANK::gotoxy(30, 17); std::cout << "|----'-,-',--'--,'---'---'---'---'---'---'-,-'---',--,------|" << std::endl;
+    BANK::gotoxy(30, 18); std::cout << "| ctrl |  | alt |                          |altgr |  | ctrl |" << std::endl;
+    BANK::gotoxy(30, 19); std::cout << "'------'  '-----'--------------------------'------'  '------'" << std::endl;
+    BANK::Color(2);
+    BANK::gotoxy(43, 14); std::cout << "C   +   +       B   A   N   K";
+    std::this_thread::sleep_for(std::chrono::seconds(5));
 }

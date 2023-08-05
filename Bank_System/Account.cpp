@@ -12,6 +12,8 @@ std::string Asterisk(size_t size) {
 // just like any profile application
 void user::Account::Profile_Info() {
 	system("cls");
+	BANK::Design();
+	BANK::Color(2);
 	BANK::gotoxy(52, 10); std::cout << "Profile Section" << std::endl;
 	BANK::gotoxy(48, 11); std::cout << "ID: " << ID << std::endl;
 	BANK::gotoxy(48, 12); std::cout << "Name: " << Name << std::endl;

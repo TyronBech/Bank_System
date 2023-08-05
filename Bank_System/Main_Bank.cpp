@@ -10,6 +10,8 @@ bool BANK::Main_Bank(user::Account& User) {
 	unsigned choice = 0;
 	do {
 		system("cls");
+		BANK::Design();
+		BANK::Color(2);
 		BANK::gotoxy(56, 10);  std::cout << "C++ Bank" << std::endl;
 		BANK::gotoxy((119 - (8 + User.get_Name().length())) / 2, 11); 
 		std::cout << "Welcome " << User.get_Name() << std::endl;
@@ -35,7 +37,7 @@ bool BANK::Main_Bank(user::Account& User) {
 			break;
 		case 5: if (User.get_Balance() >= 50) {
 			BANK::gotoxy(44, 21); std::cout << "You still have 50 or above amount" << std::endl;
-			BANK::gotoxy(41, 22); std::cout << "in the account, cannot delete account" << std::endl;
+			BANK::gotoxy(42, 22); std::cout << "in the account, cannot delete account" << std::endl;
 			system("pause>0");
 			}
 			else {
@@ -55,6 +57,8 @@ bool BANK::Main_Bank(user::Account& User) {
 void Deposit(user::Account& User) {
 	double amount = 0;
 	system("cls");
+	BANK::Design();
+	BANK::Color(2);
 	BANK::gotoxy(52, 11); std::cout << "Deposit Section" << std::endl;
 	BANK::gotoxy(42, 13); std::cout << "Enter the amount you want deposit: ";
 	std::cin >> amount;
@@ -83,6 +87,8 @@ void Deposit(user::Account& User) {
 void Withdraw(user::Account& User) {
 	double amount;
 	system("cls");
+	BANK::Design();
+	BANK::Color(2);
 	BANK::gotoxy(51, 11); std::cout << "Withdraw Section" << std::endl;
 	BANK::gotoxy(42, 13); std::cout << "Enter the amount you want to withdraw: ";
 	std::cin >> amount;

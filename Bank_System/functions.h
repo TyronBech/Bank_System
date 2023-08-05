@@ -23,4 +23,6 @@ namespace BANK {
 	void Delete(std::vector<user::Account>& Data, user::Account& User);
 	void BubbleSort(std::vector<user::Account>& User);
 	void gotoxy(short x, short y);
+	void Design();
+	void Color(short colorCode);
 }
