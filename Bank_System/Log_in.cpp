@@ -13,17 +13,21 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 	size_t index = -1;
 	bool result;
 	do {
-		std::cout << "Log In Section" << std::endl;
-		std::cout << "Enter username: ";
+		system("cls");
+		BANK::Design(0);
+		BANK::Color(2);
+		BANK::gotoxy(53, 10); std::cout << "Log In Section" << std::endl;
+		BANK::gotoxy(48, 12); std::cout << "Enter username: ";
 		std::getline(std::cin >> std::ws, input_username);
-		std::cout << "Enter a password: ";
+		BANK::gotoxy(48, 13); std::cout << "Enter a password: ";
 		std::getline(std::cin >> std::ws, input_pass);
 		size_t index = BANK::binary_search(Data, input_username);
 		// This part will check is the account exist and if the
 		// input password is correct
 		if (index == -1) {
-			std::cout << "Sorry there is no existing account" << std::endl;
-			std::cout << "Please try another account" << std::endl;
+			BANK::Color(4);
+			BANK::gotoxy(43, 15); std::cout << "Sorry there is no existing account" << std::endl;
+			BANK::gotoxy(47, 16); std::cout << "Please try another account" << std::endl;
 			counter++;
 		}
 		else {
@@ -35,15 +39,22 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 				return true;
 			}
 			else {
-				std::cout << "The input password is incorrect" << std::endl;
-				std::cout << "Please try again" << std::endl;
+				BANK::Color(4);
+				BANK::gotoxy(44, 15); std::cout << "The input password is incorrect" << std::endl;
+				BANK::gotoxy(52, 16); std::cout << "Please try again" << std::endl;
 				counter++;
 			}
 		}
 		if (counter > 3) {
-			std::cout << "You have tried many times" << std::endl;
-			std::cout << "Log in is terminated" << std::endl;
+			system("cls");
+			BANK::Design(0);
+			BANK::Color(4);
+			BANK::gotoxy(47, 12); std::cout << "You have tried many times" << std::endl;
+			BANK::gotoxy(50, 13); std::cout << "Log in is terminated" << std::endl;
+			system("pause>0");
 			return false;
 		}
+		system("pause>0");
 	} while (true);
+	return false;
 }

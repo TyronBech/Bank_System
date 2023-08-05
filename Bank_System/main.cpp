@@ -1,5 +1,8 @@
 ﻿#include "functions.h"
+#include<Windows.h>
 // Main function of the program
+
+void Display();
 int main()
 {
     // vector that handle all the accounts during program execution
@@ -12,19 +15,24 @@ int main()
     // to note that the program should retrieve the accounts only
     BANK::Account_List(0, User);
     unsigned choice = 0;
-    bool result;
+    bool result = true;
+    Display();
     // Main menu where program is going the let the user to choose
     // based on available choices and check it to the switch case
     do {
-        std::cout << "C++ Bank" << std::endl;
-        std::cout << "Welcome" << std::endl;
-        std::cout << "1 - Log in" << std::endl;
-        std::cout << "2 - Sign up" << std::endl;
-        std::cout << "3 - Exit" << std::endl;
-        std::cout << "Enter your choice: ";
-        std::cin >> choice;
+        system("cls");
+        BANK::Design(0);
+        BANK::Color(2);
+        BANK::gotoxy(56, 10); std::cout << "C++ Bank" << std::endl;
+        BANK::gotoxy(54, 11); std::cout << "Welcome User" << std::endl;
+        BANK::gotoxy(53, 13); std::cout << "1 - Log in" << std::endl;
+        BANK::gotoxy(53, 14); std::cout << "2 - Sign up" << std::endl;
+        BANK::gotoxy(53, 15); std::cout << "3 - Exit" << std::endl;
+        BANK::gotoxy(51, 16); std::cout << "Enter your choice: ";
+        choice = BANK::Try_catch_int(static_cast<long long>(choice));
         // Switch case is used to check the user's input
         switch (choice) {
+        case 0: break;
             // Case 1 if for log in and directing to the Main_Bank function
         case 1: result = BANK::Log_in(User);
             if (result) BANK::Account_List(1, User);
@@ -35,9 +43,13 @@ int main()
             // if the sign up is successful
             result = std::get<0>(Get_info);
             if (!result) {
-                std::cout << "You may tried multiple times and failed" << std::endl;
-                std::cout << "or encounter error during sign up" << std::endl;
-                std::cout << "Sign up terminated" << std::endl;
+                system("cls");
+                BANK::Design(0);
+                BANK::Color(4);
+                BANK::gotoxy(40, 12); std::cout << "You may tried multiple times and failed" << std::endl;
+                BANK::gotoxy(43, 13); std::cout << "or encounter error during sign up" << std::endl;
+                BANK::gotoxy(51, 14); std::cout << "Sign up terminated" << std::endl;
+                system("pause>0");
             }
             else {
                 // Getting the second return which is the account
@@ -50,14 +62,49 @@ int main()
                 // function is called to rewrite the contents of the account alongside
                 // with new created account done by Sign_up
                 BANK::Account_List(1, User);
-                std::cout << "Signed an Account successfully" << std::endl;
-                std::cout << "You may now log in" << std::endl;
+                system("cls");
+                BANK::Design(0);
+                BANK::Color(2);
+                BANK::gotoxy(45, 12); std::cout << "Signed an account successfully" << std::endl;
+                BANK::gotoxy(51, 13); std::cout << "You may now log in" << std::endl;
             }
             break;
         case 3: // Exit case
             break;
-        default: std::cout << "That is a invalid choice" << std::endl;
+        default: BANK::Color(4);
+            BANK::gotoxy(48, 17); std::cout << "That is a invalid choice" << std::endl;
+            system("pause>0");
         }
-        if (!result) break;
     } while (choice != 3);
+    for (int i = 0; i < 50; i++) {
+        system("cls");
+        BANK::Design(1);
+        BANK::Color(2);
+        BANK::gotoxy(46, 11); std::cout << "Thank you for using C++ Bank" << std::endl;
+        BANK::gotoxy(54, 12); std::cout << "See you again" << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
+    return 0;
+}
+void Display() {
+    // ASCII Drawing (Keyboard) for the title page of the program
+    // The keyboard used was modified to show program's title
+    /// @author Nieminen Mika
+    // Link: https://www.asciiart.eu/computers/keyboards
+    system("cls");
+    BANK::Design(0);
+    BANK::gotoxy(30, 9); std::cout << ",---,---,---,---,---,---,---,---,---,---,---,---,---,-------," << std::endl;
+    BANK::gotoxy(30, 10); std::cout << "|1/2| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | + | ' | <-    |" << std::endl;
+    BANK::gotoxy(30, 11); std::cout << "|---'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-----|" << std::endl;
+    BANK::gotoxy(30, 12); std::cout << "| ->| | Q | W | E | R | T | Y | U | I | O | P | ] | ^ |     |" << std::endl;
+    BANK::gotoxy(30, 13); std::cout << "|-----',--'---'---'---'---'---'---'---'---'---',--',--'|    |" << std::endl;
+    BANK::gotoxy(30, 14); std::cout << "| Caps |                                       | [ | * |    |" << std::endl;
+    BANK::gotoxy(30, 15); std::cout << "|----,-'-,---,---,---,---,---,---,---,---,---,-'-,-'---'----|" << std::endl;
+    BANK::gotoxy(30, 16); std::cout << "|    | < | Z | X | C | V | B | N | M | , | . | - |          |" << std::endl;
+    BANK::gotoxy(30, 17); std::cout << "|----'-,-',--'--,'---'---'---'---'---'---'-,-'---',--,------|" << std::endl;
+    BANK::gotoxy(30, 18); std::cout << "| ctrl |  | alt |                          |altgr |  | ctrl |" << std::endl;
+    BANK::gotoxy(30, 19); std::cout << "'------'  '-----'--------------------------'------'  '------'" << std::endl;
+    BANK::Color(2);
+    BANK::gotoxy(43, 14); std::cout << "C   +   +       B   A   N   K";
+    std::this_thread::sleep_for(std::chrono::seconds(5));
 }

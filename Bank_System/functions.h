@@ -11,6 +11,7 @@
 #include<limits>
 #include<cctype>
 #include<tuple>
+#include<thread>
 namespace BANK {
 	// Declaration of all important functions of the program
 	// Each functions is initialized in a separated .cpp files
@@ -21,4 +22,8 @@ namespace BANK {
 	size_t binary_search(std::vector<user::Account> arr, const std::string target);
 	void Delete(std::vector<user::Account>& Data, user::Account& User);
 	void BubbleSort(std::vector<user::Account>& User);
+	void gotoxy(short x, short y);
+	void Design(int ending);
+	void Color(short colorCode);
+	int Try_catch_int(long long choice);
 }
