@@ -1,4 +1,5 @@
 #include"functions.h"
+#include<conio.h>
 // This function is used to check if the user input a
 // non-alphabetic character to his/her name
 bool Name_checker(const std::string name) {
@@ -13,7 +14,7 @@ bool Name_checker(const std::string name) {
 // Initialization of the method Sign_up from Account
 // User will input all necessary information to be
 // added in class Account also in csv file
-std::tuple<bool, user::Account> BANK::Sign_up() {
+std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users) {
 	std::string name = "";
 	bool set = false, succeed = false, set_name = false;
 	user::Account User;
@@ -132,15 +133,35 @@ std::tuple<bool, user::Account> BANK::Sign_up() {
 		system("pause>0");
 	} while (true);
 	// Username and password input
-	system("cls");
-	BANK::Design(0);
-	BANK::Color(2);
 	std::string username = "", userpass = "";
-	BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
-	BANK::gotoxy(48, 12); std::cout << "Enter a username: ";
-	std::getline(std::cin >> std::ws, username);
+	size_t result = -1;
+	counter = 1;
+	do {
+		system("cls");
+		BANK::Design(0);
+		BANK::Color(2);
+		BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
+		BANK::gotoxy(48, 12); std::cout << "Enter a username: ";
+		std::getline(std::cin >> std::ws, username);
+		result = BANK::binary_search(Users, username);
+		if (result != -1) {
+			BANK::Color(4);
+			BANK::gotoxy(43, 14); std::cout << "The username is already been taken" << std::endl;
+			BANK::gotoxy(46, 15); std::cout << "Please try another username" << std::endl;
+			counter++;
+			system("pause>0");
+		}
+		else break;
+		if (counter > 3) return std::make_tuple(false, User);
+	} while (true);
 	BANK::gotoxy(48, 13); std::cout << "Enter a password: ";
-	std::getline(std::cin >> std::ws, userpass);
+	char temp_char;
+	temp_char = _getch();
+	while (temp_char != 13) {
+		userpass.push_back(temp_char);
+		std::cout << '*';
+		temp_char = _getch();
+	}
 	succeed = true;
 	// If the input succeeded all the information stored in the
 	// temporary variables will be stored in the Account User

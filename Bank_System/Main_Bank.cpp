@@ -70,6 +70,10 @@ void Deposit(user::Account& User) {
 		BANK::Color(4);
 		BANK::gotoxy(48, 14); std::cout << "That is a invalid amount" << std::endl;
 	}
+	else if (amount > 50000) {
+		BANK::gotoxy(33, 15); std::cout << "You cannot deposit more the 50,000 in one transaction" << std::endl;
+		BANK::gotoxy(48, 16); std::cout << "Please try below 50,000" << std::endl;
+	}
 	else {
 		BANK::gotoxy(48, 15); std::cout << "Amount deposit: " << amount << std::endl;
 		if (amount > 0 && amount <= 500) User.Add_Balance(amount);

@@ -1,5 +1,5 @@
 #include "functions.h"
-
+// This function changes each characters to '*' based on its length
 std::string Asterisk(size_t size) {
 	const char asterisk = '*';
 	std::string converted_string = "";

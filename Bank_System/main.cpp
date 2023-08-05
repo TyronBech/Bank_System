@@ -1,8 +1,10 @@
 ﻿#include "functions.h"
 #include<Windows.h>
-// Main function of the program
-
+// Declared function to be initialized below
 void Display();
+std::atomic_bool stop_running(false);
+void Thank_you();
+// Main function of the program
 int main()
 {
     // vector that handle all the accounts during program execution
@@ -38,7 +40,7 @@ int main()
             if (result) BANK::Account_List(1, User);
             break;
             // Case 2 is for sign up
-        case 2: Get_info = BANK::Sign_up();
+        case 2: Get_info = BANK::Sign_up(User);
             // Getting the first return which the boolean result to be check
             // if the sign up is successful
             result = std::get<0>(Get_info);
@@ -64,9 +66,10 @@ int main()
                 BANK::Account_List(1, User);
                 system("cls");
                 BANK::Design(0);
-                BANK::Color(2);
+                BANK::Color(6);
                 BANK::gotoxy(45, 12); std::cout << "Signed an account successfully" << std::endl;
                 BANK::gotoxy(51, 13); std::cout << "You may now log in" << std::endl;
+                system("pause>0");
             }
             break;
         case 3: // Exit case
@@ -76,14 +79,12 @@ int main()
             system("pause>0");
         }
     } while (choice != 3);
-    for (int i = 0; i < 50; i++) {
-        system("cls");
-        BANK::Design(1);
-        BANK::Color(2);
-        BANK::gotoxy(46, 11); std::cout << "Thank you for using C++ Bank" << std::endl;
-        BANK::gotoxy(54, 12); std::cout << "See you again" << std::endl;
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-    }
+    std::thread thread1(Thank_you);
+    std::thread thread2([]() { system("pause>0"); stop_running = true; });
+    thread1.join();
+    thread2.join();
+    system("cls");
+    BANK::Color(7);
     return 0;
 }
 void Display() {
@@ -107,4 +108,15 @@ void Display() {
     BANK::Color(2);
     BANK::gotoxy(43, 14); std::cout << "C   +   +       B   A   N   K";
     std::this_thread::sleep_for(std::chrono::seconds(5));
+}
+void Thank_you() {
+    while(!stop_running) {
+        system("cls");
+        BANK::Design(1);
+        BANK::Color(2);
+        BANK::gotoxy(46, 11); std::cout << "Thank you for using C++ Bank" << std::endl;
+        BANK::gotoxy(54, 12); std::cout << "See you again" << std::endl;
+        BANK::gotoxy(50, 20); std::cout << "Enter any key to exit" << std::endl;
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+    }
 }

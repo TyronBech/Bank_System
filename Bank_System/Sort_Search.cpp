@@ -20,13 +20,11 @@ size_t BANK::binary_search(std::vector<user::Account> arr, const std::string tar
 // vector related issues, bubble sort chosen since number of accounts
 // is not big for efficient sorting
 void BANK::BubbleSort(std::vector<user::Account>& User) {
-	for (size_t i = 0; i < User.size(); i++) {
-		for(size_t j = 0; j < User.size() - 1; j++) {
+	for (size_t i = 0; i < User.size(); i++)
+		for(size_t j = 0; j < User.size() - 1; j++)
 			if (User[j].get_Username() > User[j + 1].get_Username()) {
 				user::Account temp = User[j];
 				User[j] = User[j + 1];
 				User[j + 1] = temp;
 			}
-		}
-	}
 }

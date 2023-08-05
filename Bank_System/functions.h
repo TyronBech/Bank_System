@@ -12,10 +12,12 @@
 #include<cctype>
 #include<tuple>
 #include<thread>
+#include<chrono>
+#include<atomic>
 namespace BANK {
 	// Declaration of all important functions of the program
 	// Each functions is initialized in a separated .cpp files
-	std::tuple<bool, user::Account> Sign_up();
+	std::tuple<bool, user::Account> Sign_up(std::vector<user::Account>& Users);
 	void Account_List(unsigned flag, std::vector<user::Account>& List_of_Accounts);
 	bool Log_in(std::vector<user::Account>& Data);
 	bool Main_Bank(user::Account& User);
