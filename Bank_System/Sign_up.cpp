@@ -11,9 +11,18 @@ bool Name_checker(const std::string name) {
 	}
 	return true;
 }
-// Initialization of the method Sign_up from Account
-// User will input all necessary information to be
-// added in class Account also in csv file
+/// <summary>
+/// This Sign_up function will be the input account of the user
+/// it let the user to input necessary information
+/// </summary>
+/// <param name="Users">
+/// Users is a parameter for finding existing username
+/// that stops user from repeating the same username
+/// </param>
+/// <returns>
+/// returns a boolean the identify if successful then will also
+/// return User based on boolean value
+/// </returns>
 std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users) {
 	std::string name = "";
 	bool set = false, succeed = false, set_name = false;
@@ -27,6 +36,7 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 		system("cls");
 		BANK::Design(0);
 		BANK::Color(2);
+		// This part is for user's name
 		BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
 		BANK::gotoxy(48, 12); std::cout << "Enter your name: ";
 		std::getline(std::cin >> std::ws, name);
@@ -83,7 +93,8 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 				std::ostringstream oss;
 				oss << Months[month] << ' ' << day << ' ' << year;
 				birthdate = oss.str();
-				age = (Local_Time.tm_year + 1900) - year;
+				// Setting the age based on birthdate
+				age = static_cast<unsigned>(Local_Time.tm_year + 1900) - year;
 				if (month > (Local_Time.tm_mon + 1) ||
 					(month == (Local_Time.tm_mon + 1) && day > Local_Time.tm_mday)) age--;
 				return true;
@@ -113,6 +124,7 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 		system("cls");
 		BANK::Design(0);
 		BANK::Color(2);
+		// Displaying the available options for user's gender
 		BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
 		BANK::gotoxy(48, 12); std::cout << "Enter your gender:" << std::endl;
 		BANK::gotoxy(48, 13); std::cout << "A. Male" << std::endl;
@@ -121,6 +133,7 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 		BANK::gotoxy(48, 16); std::cout << "Enter your choice: ";
 		std::cin >> gender;
 		gender = toupper(gender);
+		// Checking if the user's input is valid
 		if (gender != 'A' && gender != 'B' && gender != 'C') {
 			BANK::Color(4);
 			BANK::gotoxy(48, 17); std::cout << "That is a invalid choice" << std::endl;
@@ -140,10 +153,13 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 		system("cls");
 		BANK::Design(0);
 		BANK::Color(2);
+		// Entering the username of the user
 		BANK::gotoxy(52, 10); std::cout << "Sign Up Section" << std::endl;
 		BANK::gotoxy(48, 12); std::cout << "Enter a username: ";
 		std::getline(std::cin >> std::ws, username);
 		result = BANK::binary_search(Users, username);
+		// If the input username has the same username in the existing accounts
+		// it will notify the user, and letting him/her to try again
 		if (result != -1) {
 			BANK::Color(4);
 			BANK::gotoxy(43, 14); std::cout << "The username is already been taken" << std::endl;
@@ -154,8 +170,11 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 		else break;
 		if (counter > 3) return std::make_tuple(false, User);
 	} while (true);
+	// Entering for user's password
 	BANK::gotoxy(48, 13); std::cout << "Enter a password: ";
 	char temp_char;
+	// While typing the password, the characters will change into '*'
+	// to hide the user's password
 	while ((temp_char = _getch()) != 13) {
 		if (temp_char == 8) {
 			if (!userpass.empty()) {

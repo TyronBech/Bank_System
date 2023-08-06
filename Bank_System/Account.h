@@ -18,6 +18,10 @@ namespace user {
 	public:
 		// Default constructor for Account class
 		Account() = default;
+		// Function to update the user's age
+		// based on given birthdate
+		void Age_counter();
+		// Method to display the user's info
 		void Profile_Info();
 		void Add_Balance(double amount);
 		void Deduct_Balance(double amount);
