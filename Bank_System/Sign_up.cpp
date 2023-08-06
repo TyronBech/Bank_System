@@ -156,11 +156,17 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 	} while (true);
 	BANK::gotoxy(48, 13); std::cout << "Enter a password: ";
 	char temp_char;
-	temp_char = _getch();
-	while (temp_char != 13) {
-		userpass.push_back(temp_char);
-		std::cout << '*';
-		temp_char = _getch();
+	while ((temp_char = _getch()) != 13) {
+		if (temp_char == 8) {
+			if (!userpass.empty()) {
+				userpass.pop_back();
+				std::cout << "\b \b";
+			}
+		}
+		else {
+			userpass.push_back(temp_char);
+			std::cout << '*';
+		}
 	}
 	succeed = true;
 	// If the input succeeded all the information stored in the

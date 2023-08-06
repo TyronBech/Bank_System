@@ -22,11 +22,17 @@ bool BANK::Log_in(std::vector<user::Account>& Data) {
 		BANK::gotoxy(48, 12); std::cout << "Enter username: ";
 		std::getline(std::cin >> std::ws, input_username);
 		BANK::gotoxy(48, 13); std::cout << "Enter a password: ";
-		temp_char = _getch();
-		while (temp_char != 13) {
-			input_pass.push_back(temp_char);
-			std::cout << '*';
-			temp_char = _getch();
+		while ((temp_char = _getch()) != 13) {
+			if (temp_char == 8) {
+				if (!input_pass.empty()) {
+					input_pass.pop_back();
+					std::cout << "\b \b";
+				}
+			}
+			else {
+				input_pass.push_back(temp_char);
+				std::cout << '*';
+			}
 		}
 		size_t index = BANK::binary_search(Data, input_username);
 		// This part will check is the account exist and if the

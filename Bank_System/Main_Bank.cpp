@@ -1,7 +1,9 @@
 #include"functions.h"
+#include<iomanip>
 
 void Deposit(user::Account& User);
 void Withdraw(user::Account& User);
+std::string amount_view(double amount);
 // Main_Bank is a function to do the transactions
 // User can deposit, withdraw, check balance, view
 // profile, and delete an account
@@ -26,8 +28,8 @@ bool BANK::Main_Bank(user::Account& User) {
 		switch (choice) {
 		case 0: break;
 		case 1:
-			BANK::gotoxy(52, 21); std::cout << "Balance Section" << std::endl;
-			BANK::gotoxy(48, 22); std::cout << "Your current balance: " << User.get_Balance() << std::endl;
+			BANK::gotoxy(53, 21); std::cout << "Balance Section" << std::endl;
+			BANK::gotoxy(48, 22); std::cout << "Your current balance: " << amount_view(User.get_Balance()) << std::endl;
 			system("pause>0");
 			break;
 		case 2: Deposit(User);
@@ -75,7 +77,7 @@ void Deposit(user::Account& User) {
 		BANK::gotoxy(48, 16); std::cout << "Please try below 50,000" << std::endl;
 	}
 	else {
-		BANK::gotoxy(48, 15); std::cout << "Amount deposit: " << amount << std::endl;
+		BANK::gotoxy(48, 15); std::cout << "Amount deposit: " << amount_view(amount) << std::endl;
 		if (amount > 0 && amount <= 500) User.Add_Balance(amount);
 		else if (amount > 500 && amount <= 10000) {
 			BANK::gotoxy(48, 16); std::cout << "Deposit charge: " << amount * 0.05 << std::endl;
@@ -118,7 +120,7 @@ void Withdraw(user::Account& User) {
 		BANK::gotoxy(48, 14); std::cout << "You have insufficient balance" << std::endl;
 	}
 	else {
-		BANK::gotoxy(48, 15); std::cout << "Amount withdrawn: " << amount << std::endl;
+		BANK::gotoxy(48, 15); std::cout << "Amount withdrawn: " << amount_view(amount) << std::endl;
 		if (amount > 0 && amount <= 500) User.Deduct_Balance(amount);
 		else if (amount > 500 && amount <= 10000) {
 			BANK::gotoxy(48, 16); std::cout << "Withdraw charge: " << amount * 0.05 << std::endl;
@@ -131,4 +133,16 @@ void Withdraw(user::Account& User) {
 		BANK::gotoxy(48, 17); std::cout << "Updated balance: " << User.get_Balance() << std::endl;
 	}
 	system("pause>0");
+}
+std::string amount_view(double amount) {
+	std::stringstream stream;
+	stream << std::fixed << std::setprecision(2) << amount;
+	std::string str_amount = stream.str();
+	size_t pos = str_amount.find('.');
+	int num_of_digits = pos == std::string::npos ? static_cast<int>(str_amount.length())
+		: static_cast<int>(pos);
+	for (int i = num_of_digits - 3; i > 0; i -= 3) {
+		str_amount.insert(i, ",");
+	}
+	return str_amount;
 }
