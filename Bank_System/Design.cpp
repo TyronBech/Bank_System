@@ -42,14 +42,14 @@ void BANK::Design(int ending) {
 		for (short i = value, j = 3; i <= 110, j < 24; i += value) {
 			value1 = distribution1(generator);
 			BANK::Color(value1);
-			if (i >= 110) j++;
+			if (i >= 110) { j++; i = value; }
 			BANK::gotoxy(value, j); std::cout << star;
 			value = distribution(generator);
 		}
 		for (short i = value, j = 3; i <= 110, j < 24; i += value) {
 			value1 = distribution1(generator);
 			BANK::Color(value1);
-			if (i >= 110) j++;
+			if (i >= 110) { j++; i = value; }
 			BANK::gotoxy(value, j); std::cout << little_star;
 			value = distribution(generator);
 		}
@@ -77,14 +77,14 @@ void BANK::Design(int ending) {
 			value1 = distribution1(generator);
 			BANK::Color(value1);
 			BANK::gotoxy(value, j); std::cout << star;
-			if (i >= 110) j++;
+			if (i >= 110) { j++; i = value; }
 			value = distribution(generator);
 		}
 		for (short i = value, j = 3; i <= 110, j < 24; i += value) {
 			value1 = distribution1(generator);
 			BANK::Color(value1);
 			BANK::gotoxy(value, j); std::cout << little_star;
-			if (i >= 110) j++;
+			if (i >= 110) { j++; i = value; }
 			value = distribution(generator);
 		}
 	}

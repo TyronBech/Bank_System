@@ -94,6 +94,7 @@ void Display() {
     // Link: https://www.asciiart.eu/computers/keyboards
     system("cls");
     BANK::Design(0);
+    BANK::Color(3);
     BANK::gotoxy(30, 9); std::cout << ",---,---,---,---,---,---,---,---,---,---,---,---,---,-------," << std::endl;
     BANK::gotoxy(30, 10); std::cout << "|1/2| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 | + | ' | <-    |" << std::endl;
     BANK::gotoxy(30, 11); std::cout << "|---'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-'-,-----|" << std::endl;
@@ -105,6 +106,7 @@ void Display() {
     BANK::gotoxy(30, 17); std::cout << "|----'-,-',--'--,'---'---'---'---'---'---'-,-'---',--,------|" << std::endl;
     BANK::gotoxy(30, 18); std::cout << "| ctrl |  | alt |                          |altgr |  | ctrl |" << std::endl;
     BANK::gotoxy(30, 19); std::cout << "'------'  '-----'--------------------------'------'  '------'" << std::endl;
+    // C++ Bank text in different color that placed inside the space of the keyboard
     BANK::Color(2);
     BANK::gotoxy(43, 14); std::cout << "C   +   +       B   A   N   K";
     std::this_thread::sleep_for(std::chrono::seconds(5));

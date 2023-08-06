@@ -16,6 +16,20 @@ void BANK::gotoxy(short x, short y) {
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), c);
 }
 /// <summary>
+/// This enum will help the programmer to distinguish the color based
+/// on the set name on each combinations
+/// </summary>
+enum TEXT_COLOR {
+	PURPLE = FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY,
+	BRIGHT_YELLOW = FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY,
+	BLUE_GREEN = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
+	RED = FOREGROUND_RED | FOREGROUND_INTENSITY,
+	BLUE = FOREGROUND_BLUE | FOREGROUND_INTENSITY,
+	GREEN = FOREGROUND_GREEN | FOREGROUND_INTENSITY,
+	RESET_COLOR = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE
+};
+
+/// <summary>
 /// This function will give the color of the text during program
 /// execution, and the color will be identified based on passed argument
 /// </summary>
@@ -25,26 +39,28 @@ void BANK::gotoxy(short x, short y) {
 /// </param>
 void BANK::Color(short colorCode) {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
+	/*
 	short colors1 = FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY; // Purple
 	short colors2 = FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY; // Bright Yellow
-	short colors3 = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY; // Indigo
+	short colors3 = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY; // Blue-green
 	short colors4 = FOREGROUND_RED | FOREGROUND_INTENSITY; // Red
 	short colors5 = FOREGROUND_BLUE | FOREGROUND_INTENSITY; // Blue
 	short colors6 = FOREGROUND_GREEN | FOREGROUND_INTENSITY; // Green
 	short colors7 = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE; // Reset color
+	*/
 	switch (colorCode) {
-	case 1: SetConsoleTextAttribute(handle, colors1);
+	case 1: SetConsoleTextAttribute(handle, PURPLE);
 		break;
-	case 2: SetConsoleTextAttribute(handle, colors2);
+	case 2: SetConsoleTextAttribute(handle, BRIGHT_YELLOW);
 		break;
-	case 3: SetConsoleTextAttribute(handle, colors3);
+	case 3: SetConsoleTextAttribute(handle, BLUE_GREEN);
 		break;
-	case 4: SetConsoleTextAttribute(handle, colors4);
+	case 4: SetConsoleTextAttribute(handle, RED);
 		break;
-	case 5: SetConsoleTextAttribute(handle, colors5);
+	case 5: SetConsoleTextAttribute(handle, BLUE);
 		break;
-	case 6: SetConsoleTextAttribute(handle, colors6);
+	case 6: SetConsoleTextAttribute(handle, GREEN);
 		break;
-	case 7: SetConsoleTextAttribute(handle, colors7);
+	case 7: SetConsoleTextAttribute(handle, RESET_COLOR);
 	}
 }
