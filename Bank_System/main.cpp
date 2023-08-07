@@ -81,7 +81,7 @@ int main()
         }
     } while (choice != 3);
     // Threading the Thank_you function and lambda function enter for the ending of the program
-    // The prgram will stop of the user enters any key, else it will continue to display
+    // The program will stop of the user enters any key, else it will continue to display
     // the thank you text to the screen alongside with the changing design colors
     std::thread thread1(Thank_you);
     std::thread thread2([]() { system("pause>0"); stop_running = true; });

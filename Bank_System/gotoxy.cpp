@@ -39,15 +39,6 @@ enum TEXT_COLOR {
 /// </param>
 void BANK::Color(short colorCode) {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
-	/*
-	short colors1 = FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY; // Purple
-	short colors2 = FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY; // Bright Yellow
-	short colors3 = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY; // Blue-green
-	short colors4 = FOREGROUND_RED | FOREGROUND_INTENSITY; // Red
-	short colors5 = FOREGROUND_BLUE | FOREGROUND_INTENSITY; // Blue
-	short colors6 = FOREGROUND_GREEN | FOREGROUND_INTENSITY; // Green
-	short colors7 = FOREGROUND_RED | FOREGROUND_GREEN | FOREGROUND_BLUE; // Reset color
-	*/
 	switch (colorCode) {
 	case 1: SetConsoleTextAttribute(handle, PURPLE);
 		break;

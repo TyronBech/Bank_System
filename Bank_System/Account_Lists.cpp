@@ -67,7 +67,7 @@ std::vector<user::Account> Retrieve() {
 			user.set_Password(userpass);
 			user.set_Balance(balance);
 			// Before pushing the user account to the vector
-			// it will update the age first using the Age_counter funtion
+			// it will update the age first using the Age_counter function
 			user.Age_counter();
 			// Push the temp Account to the vector of Accounts
 			Users.push_back(user);

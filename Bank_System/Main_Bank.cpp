@@ -248,7 +248,10 @@ bool Valid_amount(std::string& amount) {
 /// csv file and rewrite the contents with updated balance
 /// on user's account
 /// </summary>
-/// <param name="User"></param>
+/// <param name="User">
+/// The parameter User is needed to help update the account in
+/// the csv file
+/// </param>
 void Copy_CSV_balance(user::Account& User) {
 	std::vector<user::Account> Users;
 	BANK::Account_List(0, Users);

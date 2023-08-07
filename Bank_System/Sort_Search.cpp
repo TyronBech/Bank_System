@@ -1,11 +1,18 @@
 #include"functions.h"
 
-// The binary search will help minimize the search time
-// The parameter arr will be the vector handling all the accounts to find
-// target is the searching point of the function if there is no equality
-// it will return false
-// returns boolean either true is the function found the target or
-// false if it doesn't
+/// <summary>
+/// This function will find the index of the sorted accounts in the vector
+/// </summary>
+/// <param name="arr">
+/// arr parameter is the vector of accounts
+/// </param>
+/// <param name="target">
+/// target is the username as argument that is going to find if existing
+/// in the vector
+/// </param>
+/// <returns>
+/// It will return the index of the username if found else -1 if not
+/// </returns>
 size_t BANK::binary_search(std::vector<user::Account> arr, const std::string target) {
 	size_t low = 0, high = arr.size() - 1;
 	while (low <= high) {
@@ -16,9 +23,13 @@ size_t BANK::binary_search(std::vector<user::Account> arr, const std::string tar
 	}
 	return -1;
 }
-// The sorting method is changed from quicksort to bubble sort because of 
-// vector related issues, bubble sort chosen since number of accounts
-// is not big for efficient sorting
+/// <summary>
+/// The Bubblesort is going to sort the vector of accounts alphabetically
+/// based on usernames of the users.
+/// </summary>
+/// <param name="User">
+/// User is the passed vector argument that is going to be sorted by the funtion
+/// </param>
 void BANK::BubbleSort(std::vector<user::Account>& User) {
 	for (size_t i = 0; i < User.size(); i++)
 		for(size_t j = 0; j < User.size() - 1; j++)

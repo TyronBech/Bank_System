@@ -52,9 +52,9 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 		if (counter > 3) return std::make_tuple(false, User);
 	} while (true);
 	counter = 1;
-	// Lambda function to setup user's birthdate
 	unsigned age = 0;
 	std::string birthdate = "";
+	// Lambda function to setup user's birthdate
 	auto set_birthdate = [&birthdate, &age, &counter]() -> bool {
 		// variables needed for setting the user's birthdate
 		time_t now = time(0);
