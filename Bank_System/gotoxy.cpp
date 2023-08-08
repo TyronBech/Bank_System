@@ -20,9 +20,9 @@ void BANK::gotoxy(short x, short y) {
 /// on the set name on each combinations
 /// </summary>
 enum TEXT_COLOR {
-	PURPLE = FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY,
-	BRIGHT_YELLOW = FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY,
-	BLUE_GREEN = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
+	MAGENTA = FOREGROUND_BLUE | FOREGROUND_RED | FOREGROUND_INTENSITY,
+	YELLOW = FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_INTENSITY,
+	CYAN = FOREGROUND_GREEN | FOREGROUND_BLUE | FOREGROUND_INTENSITY,
 	RED = FOREGROUND_RED | FOREGROUND_INTENSITY,
 	BLUE = FOREGROUND_BLUE | FOREGROUND_INTENSITY,
 	GREEN = FOREGROUND_GREEN | FOREGROUND_INTENSITY,
@@ -40,11 +40,11 @@ enum TEXT_COLOR {
 void BANK::Color(short colorCode) {
 	HANDLE handle = GetStdHandle(STD_OUTPUT_HANDLE);
 	switch (colorCode) {
-	case 1: SetConsoleTextAttribute(handle, PURPLE);
+	case 1: SetConsoleTextAttribute(handle, MAGENTA);
 		break;
-	case 2: SetConsoleTextAttribute(handle, BRIGHT_YELLOW);
+	case 2: SetConsoleTextAttribute(handle, YELLOW);
 		break;
-	case 3: SetConsoleTextAttribute(handle, BLUE_GREEN);
+	case 3: SetConsoleTextAttribute(handle, CYAN);
 		break;
 	case 4: SetConsoleTextAttribute(handle, RED);
 		break;
