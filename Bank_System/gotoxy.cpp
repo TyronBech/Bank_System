@@ -2,14 +2,14 @@
 #include<Windows.h>
 
 /// <summary>
-/// This function is used to reallign the text in the console
+/// This function is used to realign the text in the console
 /// during program execution
 /// </summary>
 /// <param name="x">
-/// The paramter x will give the x coordinate of the console
+/// The paramater x will give the x coordinate of the console
 /// </param>
 /// <param name="y">
-/// The paramter y will give the y coordinate of the console
+/// The paramater y will give the y coordinate of the console
 /// </param>
 void BANK::gotoxy(short x, short y) {
 	COORD c = { x, y };
@@ -34,7 +34,7 @@ enum TEXT_COLOR {
 /// execution, and the color will be identified based on passed argument
 /// </summary>
 /// <param name="colorCode">
-/// The coloCode will define which color to be used to change the
+/// The colorCode will define which color to be used to change the
 /// text color in the console
 /// </param>
 void BANK::Color(short colorCode) {

@@ -25,7 +25,7 @@ int main()
         system("cls");
         BANK::Design(0);
         BANK::Color(2);
-        // Diplay the main menu alongside with the choices and input section
+        // Display the main menu alongside with the choices and input section
         BANK::gotoxy(56, 10); std::cout << "C++ Bank" << std::endl;
         BANK::gotoxy(54, 11); std::cout << "Welcome User" << std::endl;
         BANK::gotoxy(53, 13); std::cout << "1 - Log in" << std::endl;

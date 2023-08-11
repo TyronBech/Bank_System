@@ -84,7 +84,7 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 				std::cin >> input_dash && input_dash == dash &&
 				std::cin >> year && year >= 1900 && year < (Local_Time.tm_year + 1900)) {
 				std::string Months[] = {
-					"", "January", "Febuary", "March", "April",
+					"", "January", "February", "March", "April",
 					"May", "June", "July", "August",
 					"September", "October", "November", "December"
 				};
@@ -99,7 +99,7 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 					(month == (Local_Time.tm_mon + 1) && day > Local_Time.tm_mday)) age--;
 				return true;
 			}
-			// If the user did not satify the requirements, it won't bind
+			// If the user did not satisfy the requirements, it won't bind
 			// the input dates together and user will input the date again
 			else {
 				BANK::Color(4);
@@ -120,7 +120,7 @@ std::tuple<bool, user::Account> BANK::Sign_up(std::vector<user::Account>& Users)
 	counter = 1;
 	char gender;
 	do {
-		// User will choose one of the availble genders including LGBTQ+
+		// User will choose one of the available genders including LGBTQ+
 		system("cls");
 		BANK::Design(0);
 		BANK::Color(2);

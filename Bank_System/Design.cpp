@@ -26,10 +26,10 @@ void BANK::Design(int ending) {
 	short low = 1, high = 6;
 	std::uniform_int_distribution<short> distribution1(low, high);
 	short value_color = distribution1(generator);
-	// if ending is equal to 1 it means the funtion
+	// if ending is equal to 1 it means the function
 	// will print the design in the console with
 	// randomly selected color set to '-', '+' and '.'
-	// it resets the design based on forloop of the main
+	// it resets the design based on for loop of the main
 	// function
 	if (ending == 0) BANK::Color(3);
 	else BANK::Color(value_color);

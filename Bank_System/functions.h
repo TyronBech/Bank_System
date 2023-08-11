@@ -1,5 +1,5 @@
 #pragma once
-// Incluced C++ libraries
+// Included C++ libraries
 #include"Account.h"
 #include<iostream>
 #include<string>

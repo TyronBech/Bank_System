@@ -8,7 +8,7 @@
 /// </summary>
 void user::Account::Age_counter() {
 	const std::string Months[] = {
-		"", "January", "Febuary", "March", "April",
+		"", "January", "February", "March", "April",
 		"May", "June", "July", "August",
 		"September", "October", "November", "December"
 	};
