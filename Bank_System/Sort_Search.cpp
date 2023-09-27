@@ -24,11 +24,11 @@ size_t BANK::binary_search(std::vector<user::Account> arr, const std::string tar
 	return -1;
 }
 /// <summary>
-/// The Bubblesort is going to sort the vector of accounts alphabetically
+/// The Bubble sort is going to sort the vector of accounts alphabetically
 /// based on usernames of the users.
 /// </summary>
 /// <param name="User">
-/// User is the passed vector argument that is going to be sorted by the funtion
+/// User is the passed vector argument that is going to be sorted by the function
 /// </param>
 void BANK::BubbleSort(std::vector<user::Account>& User) {
 	for (size_t i = 0; i < User.size(); i++)
